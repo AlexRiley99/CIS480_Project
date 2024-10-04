@@ -1,0 +1,68 @@
+/*Contains styles that are the same across all pages*/
+/*Some color variables so for easy reusability*/
+:root{
+    --background: rgb(244, 230, 141);
+    --navbutton: rgb(255, 123, 0);
+    --navbutton-hover: rgb(248, 145, 49);
+    --navbutton-active: rgb(246, 174, 107);
+}
+
+/*Whole page*/
+html{
+    background-color: var(--background);
+}
+
+/*Navigation Bar*/
+.logoContainerDiv{
+    flex: 0 0 auto;
+}
+.logoContainerDiv img{
+    width: 100px;
+    height: auto;
+    border-radius: 100%;
+    border: 1px solid black;
+}
+.navbar{
+    padding: 10px 20px;
+    border-bottom: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navButtonsDiv{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+.navigation{
+    background-color: var(--navbutton); 
+    text-align: center;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+.navigation:hover{
+    background-color: var(--navbutton-hover);
+}
+.navigation:active{
+    background-color: var(--navbutton-active);
+}
+.navLink{
+    color: black;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+/*Headers*/
+h1, h4{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/*Lists*/
+ul{
+    list-style-type: none;
+}

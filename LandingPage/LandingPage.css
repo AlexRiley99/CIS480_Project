@@ -1,0 +1,20 @@
+.imageContainerDiv{
+    text-align: center;
+}
+#Gym_Stock_Photo1{
+    width: 500px;
+    height: auto;
+}
+
+#hoursOfOperationDiv,
+#childcareHoursDiv{
+    width: 45%;
+    text-align: center;
+}
+
+.hoursContainerDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
