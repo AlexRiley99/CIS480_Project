@@ -4,15 +4,18 @@
 #Gym_Stock_Photo1{
     width: 500px;
     height: auto;
+    border-radius: 10%;
 }
 
+
 #hoursOfOperationDiv,
-#childcareHoursDiv{
-    width: 45%;
+#childcareHoursDiv,
+#contactDiv{
+    width: 30%;
     text-align: center;
 }
 
-.hoursContainerDiv{
+.hoursAndContact{
     display: flex;
     justify-content: space-between;
     padding: 20px;

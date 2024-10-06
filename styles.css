@@ -2,9 +2,12 @@
 /*Some color variables so for easy reusability*/
 :root{
     --background: rgb(244, 230, 141);
-    --navbutton: rgb(255, 123, 0);
-    --navbutton-hover: rgb(248, 145, 49);
-    --navbutton-active: rgb(246, 174, 107);
+    --logo: rgba(255, 123, 0, 5.0);
+    --navbar: rgba(225, 195, 6, 0.5);
+    --button: rgb(255, 123, 0);
+    --button-hover: rgb(248, 145, 49);
+    --button-active: rgb(246, 174, 107);
+    --footer: rgba(192, 172, 46, 0.5);
 }
 
 /*Whole page*/
@@ -15,12 +18,17 @@ html{
 /*Navigation Bar*/
 .logoContainerDiv{
     flex: 0 0 auto;
+    background-color: var(--logo);
+    border-radius: 100%;
+    padding: 10px;
+    border: 1px solid black;
 }
 .logoContainerDiv img{
     width: 100px;
     height: auto;
     border-radius: 100%;
     border: 1px solid black;
+    margin: auto;
 }
 .navbar{
     padding: 10px 20px;
@@ -28,30 +36,34 @@ html{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: var(--navbar);
 }
 .navButtonsDiv{
     display: flex;
     justify-content: center;
     flex: 1;
 }
-.navigation{
-    background-color: var(--navbutton); 
+button{
+    background-color: var(--button); 
     text-align: center;
     padding: 5px 10px;
     margin: 0 5px;
     border-radius: 10px;
     transition: background-color 0.3s;
+    width: 100px;
+    height: auto;
 }
-.navigation:hover{
-    background-color: var(--navbutton-hover);
+button:hover{
+    background-color: var(--button-hover);
 }
-.navigation:active{
-    background-color: var(--navbutton-active);
+button:active{
+    background-color: var(--button-active);
 }
-.navLink{
+a {
     color: black;
     text-decoration:none;
     font-weight: bold;
+    font-family: serif;
 }
 
 /*Headers*/
@@ -65,4 +77,17 @@ h1, h4{
 /*Lists*/
 ul{
     list-style-type: none;
+}
+
+/*Footer*/
+.footerDiv{
+    text-align: center;
+    border-top: 2px solid black;
+    background-color: var(--footer);
+    padding: 10px;
+}
+.footer{
+    color: rgb(49, 48, 48);
+    margin: auto;
+    font-style: italic;
 }
