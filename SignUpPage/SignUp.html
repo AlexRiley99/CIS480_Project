@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles.css">
+        <link rel="stylesheet" href="SignUp.css">
+        <script src="LandingPage.js" defer></script>
+        <title>Flex & Flow Fitness - Sign Up</title>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logoContainerDiv">
+                <img src="../Images/Logo.png" alt="Company Logo" id="Logo">
+            </div>
+            <div class="navButtonsDiv">
+                <button id="landingNav" class="navigation"><a href="LandingPage.html" class="navLink">Home</a></button>
+                <button id="aboutNav" class="navigation"><a href="../AboutPage/About.html" class="navLink">About</a></button>
+                <button id="classesNav" class="navigation"><a href="../ClassesPage/Classes.html" class="navLink">Classes</a></button>
+                <button id="accountNav" class="navigation"><a href="../LoginPage/Login.html" class="navLink">Log In</a></button>
+                <button id="plansNav" class="navigation"><a href="../PlansPage/Plans.html" class="navLink">Plans</a></button>
+            </div>
+        </nav>
+        <h1>Sign Up</h1>
+    </body>
+        <form id="signupForm">
+            <fieldset id="selectAPlan">
+                <legend for="selectAPlan">Select A Plan</legend>
+                <label for="plans">Selected Plan: </label>
+                <select id="plans" name="plans">
+                    <option value="silverPlan">Silver Plan - $19.99</option>
+                    <option value="goldPlan">Gold Plan - $29.99</option>
+                    <option value="platinumPlan">Platinum Plan - $39.99</option>
+                    <option value="diamondPlan">Diamond Plan - $49.99</option>
+                </select>
+                <button class="navigation"><a href="../PlansPage/Plans.html">View Plan Details</a></button>
+            </fieldset>
+
+            <fieldset id="enterInfo">
+                <legend for="enterInfo">Enter Your Information</legend>
+                <label for="firstName">First Name: </Label>
+                <input type="text" id="firstName" name="firstName" required><br>
+                <label for="lastName">Last Name: </Label>
+                <input type="text" id="lastName" name="lastName" required><br>
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" placeholder="example@email.com" required><br>
+                <label for="phone">Phone Number: </label>
+                <input type="tel" id="phone" name="phone" placeholder="xxx-xxxx-xxxx" required><br>
+            </fieldset>
+
+            <fieldset id="loginInfo">
+                <legend for="loginInfo">Set Your Log In Credentials</legend>
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" required><br>
+                <label for="confirmPassword">Confirm Password: </label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+            </fieldset>
+
+            <fieldset id="paymentInfo">
+                <legend for="paymentInfo">Payment Information</legend>
+                <label for="nameOnCard">Cardholder's Name: </label>
+                <input type="text" id="nameOnCard" name="nameOnCard" required><br>
+                <label for="cardNumber">Card Number: </label>
+                <input type="text" id="cardNumber"  name="cardNumber" placeholder="xxxx xxxx xxxx xxxx" required><br>
+                <label for="expDate">Expiration Date: </label>
+                <input type="text" id="expDate" name="expDate" placeholder="MM/yy" required><br>
+                <label for="cvv">CVV: </label>
+                <input type="text" id="cvv" name="cvv" placeholder="xxx" required><br>
+            </fieldset>
+
+            <fieldset id="billing">
+                <legend for="billingAddress">Billing Address</legend>
+                <label for="addr1">Address Line 1: </label>
+                <input type="text" id="addr1" name="addr1"><br>
+                <label for="addr2">Address Line 2: </label>
+                <input type="text" id="addr2" name="addr2"><br>
+                <label for="city">City: </label>
+                <input type="text" id="city" name="city"><br>
+                <label for="state">State: </label>
+                <select id="state" name="state" required><br>
+                    <option value="Alabama">AL</option>
+                    <option value="Alaska">AK</option>
+                    <option value="Arizona">AZ</option>
+                    <option value="Arkansas">AR</option>
+                    <option value="California">CA</option>
+                    <option value="Colorado">CO</option>
+                    <option value="Connecticut">CT</option>
+                    <option value="Delaware">DE</option>
+                    <option value="District Of Columbia">DC</option>
+                    <option value="Florids">FL</option>
+                    <option value="Georgia">GA</option>
+                    <option value="Hawaii">HI</option>
+                    <option value="Idaho">ID</option>
+                    <option value="Illinois">IL</option>
+                    <option value="Indiana">IN</option>
+                    <option value="Iowa">IA</option>
+                    <option value="Kansas">KS</option>
+                    <option value="Kentucky">KY</option>
+                    <option value="Louisiana">LA</option>
+                    <option value="Maine">ME</option>
+                    <option value="Maryland">MD</option>
+                    <option value="Massachussetts">MA</option>
+                    <option value="Michigan">MI</option>
+                    <option value="Minnesota">MN</option>
+                    <option value="Mississippi">MS</option>
+                    <option value="Missouri">MO</option>
+                    <option value="Montana">MT</option>
+                    <option value="Nebraska">NE</option>
+                    <option value="Nevada">NV</option>
+                    <option value="New Hampshire">NH</option>
+                    <option value="New Jersey">NJ</option>
+                    <option value="New Mexico">NM</option>
+                    <option value="New York">NY</option>
+                    <option value="North Carolina">NC</option>
+                    <option value="North Dakota">ND</option>
+                    <option value="Ohio">OH</option>
+                    <option value="Oklahoma">OK</option>
+                    <option value="Oregon">OR</option>
+                    <option value="Pennsylvania">PA</option>
+                    <option value="Rhode Island">RI</option>
+                    <option value="South Carolina">SC</option>
+                    <option value="South Dakota">SD</option>
+                    <option value="Tennessee">TN</option>
+                    <option value="Texas">TX</option>
+                    <option value="Utah">UT</option>
+                    <option value="Vermont">VT</option>
+                    <option value="Virginia">VA</option>
+                    <option value="Washington">WA</option>
+                    <option value="West Virginia">WV</option>
+                    <option value="Wisconsin">WI</option>
+                    <option value="Wyoming">WY</option>
+                </select>
+                <label for="zip">Zip Code: </label>
+                <input type="type" id="zip" name="zip"><br>
+            </fieldset>
+            <div id=buttonContainer>
+                <input type="submit" id="submit" value="Submit">
+                <input type="reset" id="reset" value="Clear">
+            </div>
+        </form>
+        <footer>
+            <div class="footerDiv">
+                <h6 class="footer">Alex Riley | October 2025 | CIS480 Software Development Capstone | ECPI University</h6>
+            </div>
+        </footer>
+    </html>

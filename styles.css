@@ -8,6 +8,7 @@
     --button-hover: rgb(248, 145, 49);
     --button-active: rgb(246, 174, 107);
     --footer: rgba(192, 172, 46, 0.5);
+    --placeholder: rgb(60, 59, 59);
 }
 
 /*Whole page*/
@@ -43,9 +44,13 @@ html{
     justify-content: center;
     flex: 1;
 }
-button{
+button, input[type=submit], input[type=reset]{
     background-color: var(--button); 
     text-align: center;
+    color: black;
+    text-decoration:none;
+    font-weight: bold;
+    font-family: serif;
     padding: 5px 10px;
     margin: 0 5px;
     border-radius: 10px;
@@ -53,13 +58,13 @@ button{
     width: 100px;
     height: auto;
 }
-button:hover{
+button:hover, input[type=submit]:hover, input[type=reset]:hover{
     background-color: var(--button-hover);
 }
-button:active{
+button:active, input[type=submit]:active, input[type=reset]:active{
     background-color: var(--button-active);
 }
-a {
+a, input[type=submit], input[type=reset] {
     color: black;
     text-decoration:none;
     font-weight: bold;
@@ -90,4 +95,37 @@ ul{
     color: rgb(49, 48, 48);
     margin: auto;
     font-style: italic;
+}
+
+/*Forms*/
+fieldset{
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+legend{
+    text-align: center;
+    font-weight: bold;
+    margin: 5px;
+}
+label{
+    font-weight: bold;
+}
+input::placeholder{
+    color:var(--placeholder);
+}
+input, select{
+    text-align: center;
+    font-family: serif;
+}
+
+/*Tables*/
+table, th, td, tr{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+}
+table{
+    margin: 20px;
 }
