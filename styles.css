@@ -52,7 +52,7 @@ button, input[type=submit], input[type=reset]{
     font-weight: bold;
     font-family: serif;
     padding: 5px 10px;
-    margin: 0 5px;
+    margin: 10px 5px;
     border-radius: 10px;
     transition: background-color 0.3s;
     width: 100px;
@@ -110,13 +110,29 @@ legend{
 }
 label{
     font-weight: bold;
+    display: inline-block;
+    margin-bottom: 5px;
 }
 input::placeholder{
     color:var(--placeholder);
 }
-input, select{
-    text-align: center;
+input,
+select{
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 5px;
     font-family: serif;
+    text-align: center;
+    display: inline-block;
+    color: black;
+}
+
+form{
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 /*Tables*/
