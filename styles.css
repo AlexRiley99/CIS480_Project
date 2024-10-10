@@ -70,6 +70,12 @@ a, input[type=submit], input[type=reset] {
     font-weight: bold;
     font-family: serif;
 }
+.buttonContainer{
+    display: inline-block;
+    margin-bottom: 10px 5px;
+}
+
+
 
 /*Headers*/
 h1, h4{

@@ -22,11 +22,38 @@
             </div>
         </nav>
         <h1>Sign Up For Classes</h1>
-        <form id="signUpForClasses">
-            <fieldset id="classInfo">
-                <legend for="classInfo">Class Information</legend>
-            </fieldset>
-        </form>
+        <div class="formContainer">
+            <form id="signUpForClasses">
+                <fieldset id="classInfo">
+                    <legend for="classInfo">Class Information</legend>
+                    <label for=classes>Class: </label>
+                    <select id="classes">
+                        <option value="Water Aerobics">Water Aerobics</option>
+                        <option value="Yoga">Yoga</option>
+                        <option value="Kickboxing">Kickboxing</option>
+                        <option value="Jazzercise">Jazzercise</option>
+                        <option value="Water Dance">Water Dance</option>
+                        <option value="Pilates">Pilates</option>
+                        <option value="Zumba">Zumba</option>
+                        <option value="HIIT">HIIT</option>
+                    </select>
+
+                    <label for="date">Day: </label>
+                    <select id="date">
+                        <option value="M">Monday</option>
+                        <option value="T">Tuesday</option>
+                        <option value="W">Wednesday</option>
+                        <option value="Th">Thursday</option>
+                        <option value="F">Friday</option>
+                        <option value="Sa">Saturday</option>
+                        <option value="Su">Sunday</option>
+                    </select>
+                </fieldset>
+                <div class="buttonContainer">
+                    <input type="submit" value="Sign Up" name="signUpForClass"><input type="reset" value="Clear">
+                </div>
+             </form>
+        </div>
     </body>
         <footer>
             <div class="footerDiv">
