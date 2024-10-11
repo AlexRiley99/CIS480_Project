@@ -1,0 +1,18 @@
+#accountInfoDiv{
+    width: 60%;
+    margin: 10px auto;
+    padding-left: 10px;
+}
+h2, h3{
+    display: inline-block;
+}
+a{
+    text-decoration: underline;
+}
+#accountInfoButtons{
+    text-align: center;
+}
+
+.accountInfoBtn{
+    width: 150px;
+}

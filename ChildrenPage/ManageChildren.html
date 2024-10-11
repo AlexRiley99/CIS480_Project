@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../styles.css">
-        <link rel="stylesheet" href="Account.css">
-        <script src="Account.js" defer></script>
-        <title>Flex & Flow Fitness - Account</title>
+        <link rel="stylesheet" href="ManageChildren.css">
+        <script src="ManageChildren.css" defer></script>
+        <title>Flex & Flow Fitness - Manage Children</title>
     </head>
     <body>
         <nav class="navbar">
@@ -21,16 +21,12 @@
                 <button id="plansNav" class="navigation" onclick="location.href='../PlansPage/Plans.html'">Plans</button>
             </div>
         </nav>
-        <h1>Account</h1>
-        <div id="memberInfo">
-            <h2 id="welcome">Welcome, <h2 id="memberName"></h2><h2 id="exclamation">!</h2></h2><br><!--"Welcome, [member name]!"-->
-            <h3>Member ID: </h3><h3 id="memberID"></h3><br><!--"Member ID: #####"-->
-        </div>
-        <div id="accountButtons">
-            <button class="accountBtn" id="manageAccount" onclick="location.href='../AccountInfoPage/AccountInfo.html'">Account Info</button>
-            <button class="accountBtn" id="managePlan" onclick="location.href='../ManagePlanPage/ManagePlan.html'">Manage Plan</button>
-            <button class="accountBtn" id="manageChildProfiles" onclick="location.href='../ChildrenPage/ManageChildren.html'">Manage Children</button>
-            <button class="accountBtn" id="journal" onclick="location.href='../JournalPage/Journal.html'">Journal</button>
+        <h1>Manage Children</h1>
+        <div id="manageChildrenDiv">
+            <h2>Children:</h2>
+                <h3 id="children"></h3>
+            <button class="childrenButtons" id="addNewChild">Add New Child</button>
+            <button class="childrenButtons" id="manageChild">Edit Child Profile</button>
         </div>
         <footer>
             <div class="footerDiv">

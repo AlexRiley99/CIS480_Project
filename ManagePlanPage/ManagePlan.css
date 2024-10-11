@@ -1,0 +1,8 @@
+h2{
+    display: inline-block;
+}
+#planInfo{
+    width: 60%;
+    margin: 10px auto;
+    padding: 10px;
+}
