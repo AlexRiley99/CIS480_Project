@@ -1,0 +1,20 @@
+#tooltipDiv{
+    border: 1px solid black;
+    border-radius: 100%;
+    width: 20px;
+    background-color: rgba(225, 195, 6, 0.5);
+}
+
+textarea{
+    width: 200px;
+    overflow: hidden;
+    resize: none;
+}
+
+#disclosureAgreement{
+    margin-top: 0;
+    text-align: left;
+}
+#disclosureAgreementLabel{
+    text-decoration: underline;
+}

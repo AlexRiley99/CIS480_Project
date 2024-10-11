@@ -165,3 +165,22 @@ table{
     color: red;
     font-style: italic;
 }
+
+/*Tooltip*/
+.infoIcon{
+    cursor: pointer;
+    margin-left: 5px;
+    font-weight: bold;
+}
+.tooltipText{
+    display: none;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    width: 500px;
+    z-index: 10;
+}
+.infoIcon:hover .tooltipText{
+    display: block;
+}

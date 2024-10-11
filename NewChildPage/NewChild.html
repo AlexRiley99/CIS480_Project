@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles.css">
+        <link rel="stylesheet" href="NewChild.css">
+        <script src="NewChild.js" defer></script>
+        <title>Flex & Flow Fitness - New Child</title>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logoContainerDiv">
+                <img src="../Images/Logo.png" alt="Company Logo" id="Logo">
+            </div>
+            <div class="navButtonsDiv">
+                <button id="landingNav" class="navigation" onclick="location.href='../LandingPage/LandingPage.html'">Home</button>
+                <button id="aboutNav" class="navigation" onclick="location.href='../AboutPage/About.html'">About</button>
+                <button id="classesNav" class="navigation" onclick="location.href='../ClassesPage/Classes.html'">Classes</button>
+                <button id="accountNav" class="navigation" onclick="location.href='../LoginPage/Login.html'">Log In</button>
+                <button id="plansNav" class="navigation" onclick="location.href='../PlansPage/Plans.html'">Plans</button>
+            </div>
+        </nav>
+        <h1>Add New Child</h1>
+        <div class="formContainer">
+            <form id="newChildForm">
+                <fieldset id="childInfo">
+                    <legend for="childInfo">Child's Information</legend>
+                    <label for="firstName">First Name: </label>
+                    <input type="text" id="firstName" required><br>
+                    <label for="lastName">Last Name: </label>
+                    <input type="text" id="lastName" required><br>
+                    <label for="dob">Date of Birth: </label>
+                    <input type="datetime" id="dob" required>
+                </fieldset>
+
+                <fieldset id="emergencyContacts">
+                    <legend for="emergencyContacts">Emergency Contacts</legend>
+                    <h5>Enter up to three emergency contacts other than yourself, as you will be the default contact. This information is not required.</h5>
+                    <fieldset id="contact1">
+                        <legend for="contact1">Contact #1</legend>
+                        <label for="c1FirstName">First Name</label>
+                        <input type="text" id="c1FirstName">
+                        <label for="c1LastName">Last Name</label>
+                        <input type="text" id="c1LastName">
+                        <label for="c1Phone">Phone Number: </label>
+                        <input type="tel" id="c1Phone">
+                    </fieldset>
+                    <fieldset id="contact2">
+                        <legend for="contact2">Contact #2</legend>
+                        <label for="c2FirstName">First Name</label>
+                        <input type="text" id="c2FirstName">
+                        <label for="c2LastName">Last Name</label>
+                        <input type="text" id="c2LastName">
+                        <label for="c2Phone">Phone Number: </label>
+                        <input type="tel" id="c2Phone">
+                    </fieldset>
+                    <fieldset id="contact3">
+                        <legend for="contact3">Contact #3</legend>
+                        <label for="c3FirstName">First Name</label>
+                        <input type="text" id="c3FirstName">
+                        <label for="c3LastName">Last Name</label>
+                        <input type="text" id="c3LastName">
+                        <label for="c3Phone">Phone Number: </label>
+                        <input type="tel" id="c3Phone">
+                    </fieldset>
+                </fieldset>
+
+                <fieldset id="authorizedAdults">
+                    <legend for="authorizedAdults">Authorized Adults</legend>
+                    <h5>Enter up to three adults whom are authorized to pick up your child from the on-site daycare. This information is not required.</h5>
+                </fieldset>
+
+                <fieldset id="medicalInfo">
+                    <legend for="medicalInfo">Medical Information</legend>
+                    <span class="infoIcon">
+                        <div id="tooltipDiv">?</div>
+                        <p class="tooltipText">
+                            Why do we ask for this information?<br><br>
+
+                            Making us aware of your child's allergies can help us keep them safer while in our care, 
+                            as we can do our best to keep them away from allergens that other children may bring in, 
+                            such as nuts, eggs, etc. Notifying us of whether or not you will be bringing an EpiPen can 
+                            help us see whether your child has an EpiPen that we can administer in the event of an allergic reaction.
+                            Making us aware of any disabilities that your child may have can help us better accommodate 
+                            them while in our care, using accommodations that you enter into the designated field. 
+                            You may provide or omit this information at your own discretion.
+                        </p>
+                    </span>
+                    <label for="allergies">Known Allergies: </label>
+                    <textarea id="allergies" rows="1" placeholder="nuts, eggs, fish..."></textarea><br>
+                    <label for="epipen">EpiPen: </label>
+                    <select id="epipen">
+                        <option value="" disabled>Will you bring an EpiPen?</option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select><br>
+                    <label for="disabilities">Disabilities: </label>
+                    <textarea id="disabilities" rows="2" placeholder="Nonverbal, hearing impaired, vision impaired..."></textarea><br>
+                    <label for="accommodations">Accommodations: </label>
+                    <textarea id="accommodations" rows="2" placeholder="AAC device, hearing aids, glasses..."></textarea><br><br>
+                </fieldset>
+                <fieldset id="signatures">
+                    <legend for="signatures">Signatures</legend>
+                    <h5>Sign the Consent Agreement:</h5>
+                    <label for="electronicSignature">E-Signature: </label>
+                    <input type="text" id="consentSignature">
+                    <label for="consentDate">Date: </label>
+                    <input type="datetime" id="consentDate">
+                    <h4>Admin Signature: Alexzandria R. Riley</h4>
+                    <h4>Date: <h4 id="consentDateAdmin"></h4></h4>
+
+                    <h5>Sign the Disclosure Agreement</h5>
+                    <label for="electronicSignature">E-Signature: </label>
+                    <input type="text" id="disclosureSignature">
+                    <label for="disclosureDate">Date: </label>
+                    <input type="datetime" id="disclosureDate">
+                    <h4 id="disclosureSignatureAdmin">Admin Signature: Alexzandria R. Riley</h4>
+                    <h4>Date: <h4 id="disclosureDateAdmin"></h4>
+                </fieldset>
+            </form>
+        </div>
+        <footer>
+            <div class="footerDiv">
+                <h6 class="footer">Alex Riley | October 2024 | CIS480 Software Development Capstone | ECPI University</h6>
+            </div>
+        </footer>
+    </body>
+</html>

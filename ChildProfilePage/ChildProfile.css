@@ -1,0 +1,12 @@
+#childProfileDiv{
+    margin: 10px auto;
+    width: 60%;
+    text-align: center;
+}
+.childName{
+    margin-left: 30px;
+    display: inline-block;
+}
+.viewProfile{
+    display: inline-block;
+}
