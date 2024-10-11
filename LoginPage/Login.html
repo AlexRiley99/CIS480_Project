@@ -26,16 +26,16 @@
             <form>
                 <fieldset>
                     <label for="username">Username: </label>
-                    <input type="text" id="username" required><br>
+                    <input type="text" id="username" autocomplete="off" required><br>
                     <label for="password">Password: </label>
                     <input type="password" id="password" required><br>
                 </fieldset>
                 <div id="buttonContainer">
-                    <input type="submit" value="Log In" id="loginBtn" onclick="LogIn(event)"><input type="reset" value="Clear" id="clearBtn">
+                    <input type="submit" value="Log In" id="loginBtn"><input type="reset" value="Clear" id="clearBtn">
                 </div>
                 <a href="../SignUpPage/SignUp.html" id="createAccountLink">No account? Click here to create one</a>
             </form>
-            <h5 class="errorMessage" id="error"></h5>
+            <h5 class="errorMsg" id="error"></h5>
         </div>
     </body>
         <footer>

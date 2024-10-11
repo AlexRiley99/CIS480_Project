@@ -7,3 +7,15 @@
 #buttonContainer input{
     margin-right: 10px;
 }
+
+.passwordReqirements{
+    margin: 0;
+    text-align: right;
+    font-weight:lighter;
+}
+#passReqHeader{
+    text-decoration: underline;
+}
+#specCharReq{
+    margin-bottom: 5px;
+}

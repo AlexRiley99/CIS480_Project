@@ -1,11 +1,13 @@
 //Log in button handler
+document.getElementById('loginBtn').addEventListener('click', LogIn);
+
 function LogIn(event){
     event.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     const myUsername = "AlexR99";
-    const myPassword = "Password1";
+    const myPassword = "Password1*";
 
     if(username === myUsername && password === myPassword){
        window.location.href = "../AccountPage/Account.html";

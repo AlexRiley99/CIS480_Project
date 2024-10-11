@@ -54,6 +54,15 @@
                     <input type="text" id="username" name="username" required><br>
                     <label for="password">Password: </label>
                     <input type="password" id="password" name="password" required><br>
+                        <div id="passwordRequirements">
+                            <h6 class="passwordReqirements" id="passReqHeader">Password Requirements:</h5>
+                            <h6 id="lengthReq" class="passwordReqirements">At least 8 characters</h6>
+                            <h6 id="upperReq" class="passwordReqirements">At least one uppercase letter</h6>
+                            <h6 id="lowerReq" class="passwordReqirements">At least one lowercase letter</h6>
+                            <h6 id="numReq" class="passwordReqirements">At least one number</h6>
+                            <h6 id="specCharReq" class="passwordReqirements">At least one special character (!@#$%^&*)</h6>
+
+                        </div>
                     <label for="confirmPassword">Confirm Password: </label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required><br>
                 </fieldset>
@@ -136,14 +145,15 @@
                     <input type="type" id="zip" name="zip"><br>
                 </fieldset>
                 <div id=buttonContainer>
-                    <input type="submit" id="submit" value="Submit">
-                    <input type="reset" id="reset" value="Clear">
+                    <input type="submit" id="signUp" value="Submit">
+                    <input type="reset" id="clear" value="Clear">
                 </div>
             </form>
+            <h5 class="erroMsg" id="error"></h5>
         </div>
         <footer>
             <div class="footerDiv">
-                <h6 class="footer">Alex Riley | October 2025 | CIS480 Software Development Capstone | ECPI University</h6>
+                <h6 class="footer">Alex Riley | October 2025 | CIS480 Software Development Capstone | ECPI University</h6>>
             </div>
         </footer>
     </body>

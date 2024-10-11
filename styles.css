@@ -160,7 +160,7 @@ table{
 }
 
 /*Error*/
-.errorMessage{
+.errorMsg{
     color: red;
     font-style: italic;
 }
