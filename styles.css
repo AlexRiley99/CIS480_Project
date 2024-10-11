@@ -158,3 +158,9 @@ table, th, td, tr{
 table{
     margin: 20px;
 }
+
+/*Error*/
+.errorMessage{
+    color: red;
+    font-style: italic;
+}

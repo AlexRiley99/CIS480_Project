@@ -27,7 +27,7 @@
                 <fieldset id="classInfo">
                     <legend for="classInfo">Class Information</legend>
                     <label for=classes>Class: </label>
-                    <select id="classes">
+                    <select id="classes" required>
                         <option value="Water Aerobics">Water Aerobics</option>
                         <option value="Yoga">Yoga</option>
                         <option value="Kickboxing">Kickboxing</option>
@@ -39,7 +39,7 @@
                     </select>
 
                     <label for="date">Day: </label>
-                    <select id="date">
+                    <select id="date" required>
                         <option value="M">Monday</option>
                         <option value="T">Tuesday</option>
                         <option value="W">Wednesday</option>
@@ -48,6 +48,24 @@
                         <option value="Sa">Saturday</option>
                         <option value="Su">Sunday</option>
                     </select>
+                    <label for="time">Time: </label>
+                    <select id="time" required>
+                        <option value="0900">9:00am</option>
+                        <option value="1000">10:00am</option>
+                        <option value="1100">11:00am</option>
+                        <option value="1200">12:00am</option>
+                        <option value="1430">2:30pm</option>
+                        <option value="1530">3:30pm</option>
+                        <option value="1700">5:00pm</option>
+                        <option value="1900">7:00pm</option>
+                    </select>
+                </fieldset>
+                <fieldset id="memberInfo">
+                    <legend for="memberInfo">Member Information</legend>
+                    <label for="memberName">Name: </label>
+                    <input type="text" id="memberName" placeholder="First and Last Name" required>
+                    <label for="memberId">Member ID: </label>
+                    <input type="text" id="memberId" placeholder="#####" required>
                 </fieldset>
                 <div class="buttonContainer">
                     <input type="submit" value="Sign Up" name="signUpForClass"><input type="reset" value="Clear">
