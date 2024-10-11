@@ -1,0 +1,9 @@
+h2, h3{
+    display: inline-block;
+}
+#memberInfo{
+    text-align: center;
+}
+#accountButtons{
+    text-align: center;
+}
