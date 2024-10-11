@@ -11,10 +11,8 @@ textarea{
     resize: none;
 }
 
-#disclosureAgreement{
-    margin-top: 0;
-    text-align: left;
-}
-#disclosureAgreementLabel{
+#viewConsent, #viewDisclosure{
     text-decoration: underline;
+    margin: 0;
 }
+
