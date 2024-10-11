@@ -22,6 +22,21 @@
             </div>
         </nav>
         <h1>Journal</h1>
+        <div class="formContainer">
+            <form>
+                <div id="newEntryDiv">
+                    <label for="newEntry">New Journal Entry: </label><br>
+                    <textarea id="newEntry" rows="5" maxlength="500" placeholder="January 1, 2025: 20 minutes on the treadmill, 30 reps on chest press machine, 20 minutes on spin bike...Lunch: Salad, Dinner: Steak and green beans..."></textarea>
+                    <h6 id="charCount"></h6>
+                    <input type="submit" value="Save" id="saveEntryBtn">
+                    <input type="reset" value="Clear" id="clearEntryBtn">
+                </div>
+            </form>
+            <div id="previousEntries">
+                <h3 id="previousEntriesHeader">Previous Entries</h3>
+                <h4 id="previousEntry"></h4><!--JavaScript will add entries to this list each time the "Save" button is clicked-->
+            </div>
+        </div>
         <footer>
             <div class="footerDiv">
                 <h6 class="footer">Alex Riley | October 2024 | CIS480 Software Development Capstone | ECPI University</h6>
