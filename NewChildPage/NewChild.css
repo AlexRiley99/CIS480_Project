@@ -13,6 +13,10 @@ textarea{
 
 #viewConsent, #viewDisclosure{
     text-decoration: underline;
-    margin: 0;
+    margin: 0, auto, 10px, auto;
+    text-align: center;
+}
+#viewAgreements{
+    text-align: center;
 }
 

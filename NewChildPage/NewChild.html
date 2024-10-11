@@ -22,6 +22,10 @@
             </div>
         </nav>
         <h1>Add New Child</h1>
+        <h5 id="viewAgreements">Please view the New Child Disclosure Agreement and the New Child Consent Agreement before proceeding. 
+            <br>If you view said agreements after filling out the form below, your progress may be lost.</h5>
+        <h5 id="viewDisclosure"><a href="../NewChildDisclosurePage/NewChildDisclosureAgreement.html">View New Child Disclosure Agreement</a></h5>
+        <h5 id="viewConsent"><a href="../NewChildConsentPage/NewChildConsentAgreement.html">View New Child Consent Agreement</a></h5>
         <div class="formContainer">
             <form id="newChildForm">
                 <fieldset id="childInfo">
@@ -69,6 +73,33 @@
                 <fieldset id="authorizedAdults">
                     <legend for="authorizedAdults">Authorized Adults</legend>
                     <h5>Enter up to three adults whom are authorized to pick up your child from the on-site daycare. This information is not required.</h5>
+                    <fieldset id="aa1">
+                        <legend for="aa1">Authorized Adult #1</legend>
+                        <label for="aa1FirstName">First Name</label>
+                        <input type="text" id="aa1FirstName">
+                        <label for="aa1LastName">Last Name</label>
+                        <input type="text" id="aa1LastName">
+                        <label for="aa1Phone">Phone Number: </label>
+                        <input type="tel" id="aa1Phone">
+                    </fieldset>
+                    <fieldset id="aa2">
+                        <legend for="aa2">Authorized Adult #2</legend>
+                        <label for="aa2FirstName">First Name</label>
+                        <input type="text" id="aa2FirstName">
+                        <label for="aa2LastName">Last Name</label>
+                        <input type="text" id="aa2LastName">
+                        <label for="aa2Phone">Phone Number: </label>
+                        <input type="tel" id="aa2Phone">
+                    </fieldset>
+                    <fieldset id="aa3">
+                        <legend for="aa3">Authorized Adult #3</legend>
+                        <label for="aa3FirstName">First Name</label>
+                        <input type="text" id="aa3FirstName">
+                        <label for="aa3LastName">Last Name</label>
+                        <input type="text" id="aa3LastName">
+                        <label for="aa3Phone">Phone Number: </label>
+                        <input type="tel" id="aa3Phone">
+                    </fieldset>
                 </fieldset>
 
                 <fieldset id="medicalInfo">
@@ -91,7 +122,7 @@
                     <textarea id="allergies" rows="1" placeholder="nuts, eggs, fish..."></textarea><br>
                     <label for="epipen">EpiPen: </label>
                     <select id="epipen">
-                        <option value="" disabled>Will you bring an EpiPen?</option>
+                        <option value="" selected hidden>Will you bring an EpiPen?</option>
                         <option value="Y">Yes</option>
                         <option value="N">No</option>
                     </select><br>
@@ -102,25 +133,24 @@
                 </fieldset>
                 <fieldset id="signatures">
                     <legend for="signatures">Signatures</legend>
-                    <h4>Sign the Consent Agreement:</h4>
+                    <h5>I hereby confirm that I have read and understood the New Child Consent Agreement</h5>
                     <label for="electronicSignature">E-Signature: </label>
                     <input type="text" id="consentSignature">
                     <label for="consentDate">Date: </label>
                     <input type="datetime" id="consentDate"><br>
-                    <h5 id="viewConsent"><a href="../ConsentAgreementPage/ConsentAgreement.html">View Consent Agreement</a></h5>
 
-                    <h4>Sign the Disclosure Agreement</h4>
+                    <h5>I hereby confirm that I have read and understood the New Child Consent Agreement</h5>
                     <label for="electronicSignature">E-Signature: </label>
                     <input type="text" id="disclosureSignature">
                     <label for="disclosureDate">Date: </label>
                     <input type="datetime" id="disclosureDate">
-                    <h5 id="viewDisclosure"><a href="../DisclosureAgreementPage/DisclosureAgreement.html">View Disclosure Agreement</a></h5>
+                    
                 </fieldset>
             </form>
         </div>
         <footer>
             <div class="footerDiv">
-                <h6 class="footer">Alex Riley | October 2024 | CIS480 Software Development Capstone | ECPI University</h6>
+                <h5 class="footer">Alex Riley | October 2024 | CIS480 Software Development Capstone | ECPI University</h5>
             </div>
         </footer>
     </body>
