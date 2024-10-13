@@ -1,3 +1,4 @@
+//Schema for the MemberInfo table 
 const mongoose = require('mongoose');
 const memberInfo_Schema = new mongoose.Schema({
     _id: {

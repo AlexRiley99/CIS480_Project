@@ -1,3 +1,4 @@
+//Schema for the ChildInfo table 
 const mongoose = require('mongoose');
 const ChildInfo_Schema = new mongoose.Schema({
     _id: {

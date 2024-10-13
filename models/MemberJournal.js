@@ -1,3 +1,4 @@
+//Schema for the MemberJournal table 
 const mongoose = require('mongoose');
 const memberJournal_Schema = new mongoose.Schema({
     _id: {

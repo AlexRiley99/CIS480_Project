@@ -1,3 +1,4 @@
+//Schema for the MemberChildren table 
 const mongoose = require('mongoose');
 const memberChildren_Schema = new mongoose.Schema({
     _id: {
