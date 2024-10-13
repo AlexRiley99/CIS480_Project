@@ -1,24 +1,7 @@
-//Database - Commented out because it prevents the web application from running
-//Database connections are a work in progress
-//require('dotenv').config();
-//const mongoose = require('mongoose');
-//const uri = process.env.MONGODB_URI;
-
 //Node.js
 const express = require('express');
 const path = require('path');
 const app = express();
-
-//Database connection
-//mongoose.connect(uri, {
- // useNewUrlParser: true,
-  //useUnifiedTopology: true
-    //  })
-    //.then(() => console.log('MongoDB connected'))
-    //.catch(err => {
-      //console.error('MongoDB connection error:', err)
-      //process.exit(1)
-//});
 
 //Serve static files from the 'public' directory
 app.use(express.static('public'));
