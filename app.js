@@ -1,6 +1,12 @@
+require('dotenv').config();
+const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
 const app = express();
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
 //Serve static files from the 'public' directory
 app.use(express.static('public'));
