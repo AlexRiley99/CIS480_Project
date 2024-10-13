@@ -18,7 +18,7 @@ app.use(express.static('public'));
 
 // Routes for each page
     //Landing Page
-    app.get('/', (req, res) => {
+    app.get('/landing', (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'LandingPage', 'LandingPage.html'));
     });
     //About Page
