@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
 //Serve static files from the 'public' directory
@@ -6,7 +7,7 @@ app.use(express.static('public'));
 
 // Routes for each page
     //Landing Page
-    app.get('/home', (req, res) => {
+    app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'LandingPage', 'LandingPage.html'));
     });
     //About Page
