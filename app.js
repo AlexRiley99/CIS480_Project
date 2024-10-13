@@ -1,10 +1,15 @@
+//Database
 require('dotenv').config();
 const mongoose = require('mongoose');
+const uri = process.env.MONGODB_URI;
+
+//Node.js
 const express = require('express');
 const path = require('path');
 const app = express();
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true})
+//Database connection
+mongoose.connect(uri)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
