@@ -1,9 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('FlexAndFlowDB.db');
 
-db.serialize(() => {
+db.serialize(() => { 
     // Create Tables
-
     // Plans
     db.run(`CREATE TABLE IF NOT EXISTS Plans (
         PlanID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -99,12 +98,11 @@ db.serialize(() => {
         FOREIGN KEY (MemberID) REFERENCES Members(MemberID)  
     )`);
 });
-
 // Close the database connection
 db.close((err) => {
     if (err) {
         console.error('Error closing the database:', err.message);
     } else {
-        console.log('Database created and tables added successfully.');
+        console.log('Data entered successfully.');
     }
 });
