@@ -9,14 +9,24 @@ const path = require('path');
 const app = express();
 
 //Database connection
-mongoose.connect(uri)
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+      })
     .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error('MongoDB connection error:', err));
+    .catch(err => {
+      console.error('MongoDB connection error:', err)
+      process.exit(1)
+});
 
 //Serve static files from the 'public' directory
 app.use(express.static('public'));
 
 // Routes for each page
+     //Default Page
+    app.get('/', (req, res) =>{
+            res.redirect('landing');//Redirect to landing page
+            });
     //Landing Page
     app.get('/landing', (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'LandingPage', 'LandingPage.html'));
