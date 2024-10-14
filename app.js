@@ -1,7 +1,16 @@
 //Node.js
 const express = require('express');
 const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
+const bodyParser = require('body-parser');
+
+
 const app = express();
+const db = new sqlite3.Database('FlexAndFlowDB.db');
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 //Serve static files from the 'public' directory
 app.use(express.static('public'));
@@ -23,6 +32,26 @@ app.use(express.static('public'));
     app.get('/login', (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'LoginPage', 'Login.html'));
     });
+
+        // Login endpoint
+        app.post('/login', (req, res) => {
+            const { username, password } = req.body;
+
+            
+                db.get(`SELECT * FROM LoginInfo WHERE User = ? AND Pass = ?`, [username, password], (err, row) => {
+                    if (err) {
+                        return res.status(500).send('Server error');
+                    }
+                    if (row) {
+                        return res.send('Login successful!');
+                    } else {
+                        return res.status(401).send('Invalid username or password');
+                    }
+                });
+            });
+            
+
+
     //Sign Up Page
     app.get('/signup', (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'SignUpPage', 'SignUp.html'));

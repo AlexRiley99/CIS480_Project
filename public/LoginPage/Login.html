@@ -23,12 +23,12 @@
         </nav>
         <h1>Log In</h1>
         <div class="formContainer">
-            <form>
+            <form action="/login" method="POST">
                 <fieldset>
                     <label for="username">Username: </label>
-                    <input type="text" id="username" autocomplete="off" required><br>
+                    <input type="text" id="username" name="username" autocomplete="off" required><br>
                     <label for="password">Password: </label>
-                    <input type="password" id="password" required><br>
+                    <input type="password" id="password" name="password" required><br>
                 </fieldset>
                 <div id="buttonContainer">
                     <input type="submit" value="Log In" id="loginBtn"><input type="reset" value="Clear" id="clearBtn">
