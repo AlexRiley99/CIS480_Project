@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/styles.css">
         <link rel="stylesheet" href="/NewChildDisclosurePage/NewChildDisclosureAgreement.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="/scripts.js"></script>
         <title>Flex & Flow Fitness - New Child Disclosure Agreement</title>
     </head>
     <body>
@@ -17,7 +18,7 @@
                 <form id="searchForm" onsubmit="return handleSearch(event);">
                     <i class="fas fa-search"></i>
                     <input type="text" class="searchbar" id="searchQuery" placeholder="When are kickboxing classes?">  
-                    <button id=searchBtn>Search</button>
+                    <button id="searchBtn" onclick="handleSearch()">Search</button>
                 </form>
               </div>
             <div class="navButtonsDiv">
