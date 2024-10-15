@@ -9,6 +9,7 @@
     --button-active: rgb(246, 174, 107);
     --footer: rgba(192, 172, 46, 0.5);
     --placeholder: rgb(60, 59, 59);
+    --searchbar: rgba(229, 227, 227, 0.7);
 }
 
 /*Whole page*/
@@ -35,6 +36,7 @@ html{
     padding: 10px 20px;
     border-bottom: 2px solid black;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     background-color: var(--navbar);
@@ -183,4 +185,18 @@ table{
 }
 .infoIcon:hover .tooltipText{
     display: block;
+}
+
+/*Search Bar*/
+.searchbar{
+    border-radius: 10px;
+    background-color: var(--searchbar);
+    background-image:url(./public/Images/SearchIcon.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    width: 300px;
+    padding: 5px 40px;
+    border: 1px solid black;
+    margin: 10px auto;
 }
