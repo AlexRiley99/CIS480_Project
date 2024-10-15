@@ -195,8 +195,14 @@ table{
     background-size: 20px 20px;
     background-repeat: no-repeat;
     background-position: 10px center;
+    text-align: left;
     width: 300px;
-    padding: 5px 40px;
+    padding: 10px;
     border: 1px solid black;
     margin: 10px auto;
+}
+.searchbar::placeholder{
+  font-family: 'Arial';
+  font-weight: lighter;
+  color: var(--placeholder);
 }
