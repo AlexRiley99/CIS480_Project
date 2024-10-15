@@ -4,6 +4,6 @@ function handleSearch(event){
     const searchQuery = document.getElementById('searchQuery').value; //get input value
     if(searchQuery){
     //redirect to search results page with query
-    window.location.href=`/search?query=${encodeUIRComponent(searchQuery)}`;
+    window.location.href=`/search?query=${encodeURIComponent(searchQuery)}`;
     }
 }
