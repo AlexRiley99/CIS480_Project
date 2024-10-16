@@ -127,6 +127,9 @@ async function addData(){
             MemberID: 1 
           });
 
+        console.log("Data entered successfully.");
+    } catch (error){
+        console.error("Error adding document: ", error);
     }
 }
 
