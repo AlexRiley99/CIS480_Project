@@ -15,11 +15,10 @@
                 <img src="Images/Logo.png" alt="Company Logo" id="Logo">
             </div>
             <div class="searchContainer">
-                <form id="searchForm" onsubmit="return handleSearch(event);">
-                    <i class="fas fa-search"></i>
-                    <input type="text" class="searchbar" id="searchQuery">  
-                    <button id="searchBtn" onclick="handleSearch()">Search</button>
-                </form>
+                <i class="fas fa-search"></i>
+                <input type="text" class="searchbar" id="searchQuery">  
+                <button id="searchBtn" onclick="handleSearch()">Search</button>
+                <h6 id="noResult"></h6>
             </div>
             <div class="navButtonsDiv">
                 <button id="landingNav" class="navigation" onclick="location.href='/'" >Home</button>

@@ -1,6 +1,6 @@
 /*Search Bar Functionality*/
 function handleSearch(){
-    const searchQuery = document.getElementById('searchQuery').value.toLowerCase(); //get input value
+    let searchQuery = document.getElementById('searchQuery').value.toLowerCase(); //get input value
     
     //redirect based on keywords
     if(searchQuery.includes("class") || searchQuery.includes("boxing") ||
@@ -20,6 +20,10 @@ function handleSearch(){
     searchQuery.includes("create")
         ){
         window.location.href = "/login"; //redirect to login page
+    }
+    else{
+        let noResult = document.getElementById('noResult');
+        noResult.textContent = "No results found"
     }
 
 }

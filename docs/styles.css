@@ -190,8 +190,6 @@ table{
 /*Search Bar*/
 .searchContainer{
     display: inline-block;
-    align-items: center;
-    justify-content: center;
 }
 .searchbar{
     border-radius: 10px;
@@ -201,6 +199,9 @@ table{
     border: 1px solid black;
     margin: 10px auto;
     flex: 1;
+}
+.searchContainer i{
+    margin-right: 10px;
 }
 
 
