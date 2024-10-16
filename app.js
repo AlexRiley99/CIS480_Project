@@ -22,7 +22,7 @@ app.use(express.static('public'));
             });
     //Landing Page
     app.get('/landing', (req, res) => {
-        res.sendFile(path.join(__dirname, 'public', 'LandingPage', 'LandingPage.html'));
+        res.sendFile(path.join(__dirname, 'public', 'LandingPage', 'index.html'));
     });
     //About Page
     app.get('/about', (req, res) => {
