@@ -188,6 +188,11 @@ table{
 }
 
 /*Search Bar*/
+.searchContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .searchbar{
     border-radius: 10px;
     text-align: left;
@@ -195,7 +200,7 @@ table{
     padding: 10px;
     border: 1px solid black;
     margin: 10px auto;
-    display: inline-block;
+    flex: 1;
 }
 .searchbar::placeholder{
   font-family: 'Arial';
