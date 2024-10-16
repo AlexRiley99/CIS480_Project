@@ -190,16 +190,12 @@ table{
 /*Search Bar*/
 .searchbar{
     border-radius: 10px;
-    background-color: var(--searchbar);
-    background-image:url(./public/Images/SearchIcon.png);
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    background-position: 10px center;
     text-align: left;
     width: 300px;
     padding: 10px;
     border: 1px solid black;
     margin: 10px auto;
+    display: inline-block;
 }
 .searchbar::placeholder{
   font-family: 'Arial';
