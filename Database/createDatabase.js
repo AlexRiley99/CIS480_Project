@@ -1,108 +1,198 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('FlexAndFlowDB.db');
+/*Firebase Configuration*/
+// Import functions 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-db.serialize(() => { 
-    // Create Tables
-    // Plans
-    db.run(`CREATE TABLE IF NOT EXISTS Plans (
-        PlanID INTEGER PRIMARY KEY AUTOINCREMENT,
-        PlanName TEXT NOT NULL,
-        PlanCost REAL NOT NULL
-    )`);
+//Add SDKs for Firebase products:
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-    // Members
-    db.run(`CREATE TABLE IF NOT EXISTS Members (
-        MemberID INTEGER PRIMARY KEY AUTOINCREMENT,
-        FirstName TEXT NOT NULL,
-        LastName TEXT NOT NULL,
-        Phone TEXT NOT NULL,          
-        Email TEXT NOT NULL,
-        JoinDate DATE NOT NULL,
-        Address1 TEXT NOT NULL,
-        Address2 TEXT,
-        City TEXT NOT NULL,
-        State TEXT NOT NULL,
-        ZipCode TEXT NOT NULL,        
-        PlanID INTEGER,
-        FOREIGN KEY (PlanID) REFERENCES Plans(PlanID)  
-    )`);
+const firebaseConfig = {
+  apiKey: "AIzaSyCjp08hg0zwmkeXKl0Z1d5jMvj0Njfq2dM",
+  authDomain: "cis480-project.firebaseapp.com",
+  databaseURL: "https://cis480-project.firebaseio.com",
+  projectId: "cis480-project",
+  storageBucket: "cis480-project.appspot.com",
+  messagingSenderId: "513907575321",
+  appId: "1:513907575321:web:a4c98b75f760871a7a7888"
+};
 
-    // Children
-    db.run(`CREATE TABLE IF NOT EXISTS Children (
-        ChildID INTEGER PRIMARY KEY AUTOINCREMENT,
-        FirstName TEXT NOT NULL,
-        LastName TEXT NOT NULL,
-        EnrollmentDate DATE NOT NULL,
-        Allergies TEXT,
-        EpiPen BOOLEAN,
-        Disabilities TEXT,
-        Accommodations TEXT,
-        MemberID INTEGER NOT NULL,
-        FOREIGN KEY (MemberID) REFERENCES Members(MemberID)  
-    )`);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = firebase.firestore(); //Use firestore for database operations
 
-    // EmergencyContacts
-    db.run(`CREATE TABLE IF NOT EXISTS EmergencyContacts (
-        ContactID INTEGER PRIMARY KEY AUTOINCREMENT,
-        FirstName TEXT NOT NULL,
-        LastName TEXT NOT NULL,
-        Phone TEXT NOT NULL,
-        Relationship TEXT NOT NULL,   
-        ChildID INTEGER NOT NULL,
-        FOREIGN KEY (ChildID) REFERENCES Children(ChildID)  
-    )`);
+//Counter
+    //Function using transactions makes it so that if multiple users
+    //add something to the database, it won't mess up the counter
+async function addDocumentWithAutoIncrement(collectionName, data) {
+    const counterRef = db.collection('counters').doc(`${collectionName}Counter`);
 
-    // AuthorizedAdults
-    db.run(`CREATE TABLE IF NOT EXISTS AuthorizedAdults (
-        AdultID INTEGER PRIMARY KEY AUTOINCREMENT,
-        FirstName TEXT NOT NULL,
-        LastName TEXT NOT NULL,
-        Phone TEXT NOT NULL,
-        Relationship TEXT NOT NULL,   
-        ChildID INTEGER NOT NULL,
-        FOREIGN KEY (ChildID) REFERENCES Children(ChildID)  
-    )`);
+    await initializeCounter(counterRef);
 
-    // Classes
-    db.run(`CREATE TABLE IF NOT EXISTS Classes (
-        ClassID INTEGER PRIMARY KEY AUTOINCREMENT,
-        ClassName TEXT NOT NULL,
-        ClassSchedule DATETIME NOT NULL,
-        ClassInstructor TEXT NOT NULL
-    )`);
+    await db.runTransaction(async (transaction) => {
+        const counterDoc = await transaction.get(counterRef);
+        const newCount = counterDoc.data().count + 1;
 
-    // ClassEnrollments
-    db.run(`CREATE TABLE IF NOT EXISTS ClassEnrollments (
-        EnrollmentID INTEGER PRIMARY KEY AUTOINCREMENT,
-        ClassID INTEGER NOT NULL,
-        MemberID INTEGER NOT NULL,
-        FOREIGN KEY (ClassID) REFERENCES Classes(ClassID),  
-        FOREIGN KEY (MemberID) REFERENCES Members(MemberID)  
-    )`);
+        transaction.update(counterRef, { count: newCount });
+        transaction.set(db.collection(collectionName).doc(), {
+            ...data,
+            [`${collectionName}ID`]: newCount // Set the auto-incremented ID
+        });
+    });
 
-    // Journal
-    db.run(`CREATE TABLE IF NOT EXISTS Journal (
-        EntryID INTEGER PRIMARY KEY AUTOINCREMENT,
-        EntryDate DATE NOT NULL,
-        Entry TEXT NOT NULL,
-        MemberID INTEGER NOT NULL,
-        FOREIGN KEY (MemberID) REFERENCES Members(MemberID)  
-    )`);
+    console.log(`Added document to ${collectionName} with auto-incremented ID.`);
+}
 
-    // LoginInfo
-    db.run(`CREATE TABLE IF NOT EXISTS LoginInfo (
-        LoginID INTEGER PRIMARY KEY AUTOINCREMENT,
-        Pass TEXT NOT NULL,
-        User TEXT NOT NULL,
-        MemberID INTEGER NOT NULL,
-        FOREIGN KEY (MemberID) REFERENCES Members(MemberID)  
-    )`);
-});
-// Close the database connection
-db.close((err) => {
-    if (err) {
-        console.error('Error closing the database:', err.message);
-    } else {
-        console.log('Data entered successfully.');
-    }
-});
+
+//Add data to Firestore
+        //Plans
+        addDocumentWithAutoIncrement('Plans', {
+            PlanID: newCount,
+            PlanName: "Silver Plan",
+            PlanCost: 19.99
+        });
+        console.log(`Added plan with ID: ${newCount}`);
+
+        addDocumentWithAutoIncrement('Plans', {
+            PlanID: newCount,
+            PlanName: "Gold Plan",
+            PlanCost: 29.99
+        });
+        console.log(`Added plan with ID: ${newCount}`);
+
+        addDocumentWithAutoIncrement('Plans', {
+            PlanID: newCount,
+            PlanName: "Platinum Plan",
+            PlanCost: 39.99
+        });
+        console.log(`Added plan with ID: ${newCount}`);
+
+        addDocumentWithAutoIncrement('Plans', {
+            PlanID: newCount,
+            PlanName: "Diamond Plan",
+            PlanCost: 49.99
+        });
+        console.log(`Added plan with ID: ${newCount}`);
+        
+        //Member
+        addDocumentWithAutoIncrement('Members', {
+            MemberID: newCount,
+            FirstName: "Alex",
+            LastName: "Riley",
+            Phone: "843-714-8829",
+            Email: "aleril0593@students.ecpi.edu",
+            JoinDate: new Date(),
+            Address1: "311 Macgregor Dr",
+            City: "Summerville",
+            State: "South Carolina",
+            ZipCode: "29486",
+            PlanID: 1
+        });
+        console.log(`Added member with ID: ${newCount}`);
+    
+        //Children
+        addDocumentWithAutoIncrement('Children', {
+            ChildID: newCount,
+            FirstName: "Marceline",
+            LastName: "Riley",
+            EnrollmentDate: new Date(),
+            Allergies: "None",
+            EpiPen: false,
+            Disabilities: "None",
+            Accommodations: "None",
+            MemberID: 1
+        });
+        console.log(`Added child with ID: ${newCount}`);
+        
+        addDocumentWithAutoIncrement('Children', {
+            ChildID: newCount,
+            FirstName: "Jovie",
+            LastName: "Riley",
+            EnrollmentDate: new Date(),
+            Allergies: "None",
+            EpiPen: false,
+            Disabilities: "None",
+            Accommodations: "None",
+            MemberID: 1
+        });
+        console.log(`Added child with ID: ${newCount}`);
+
+        //EmergencyContacts
+        addDocumentWithAutoIncrement('EmergencyContacts', {
+            ContactID: newCount,
+            FirstName: "Derek",
+            LastName: "Riley",
+            Phone: "812-345-4383",
+            Relationship: "Father",
+            ChildID: 1
+        });
+        console.log(`Added contact with ID: ${newCount}`);
+        
+        addDocumentWithAutoIncrement('EmergencyContacts', {
+            ContactID: newCount,
+            FirstName: "Derek",
+            LastName: "Riley",
+            Phone: "812-345-4383",
+            Relationship: "Father",
+            ChildID: 1
+        });
+        console.log(`Added contact with ID: ${newCount}`);
+
+        //AuthorizedAdults
+        addDocumentWithAutoIncrement('AuthorizedAdults', {
+            AdultID: newCount,
+            FirstName: "Derek",
+            LastName: "Riley",
+            Phone: "812-345-4383",
+            Relationship: "Father",
+            ChildID: 1
+        });
+        console.log(`Added adult with ID: ${newCount}`);
+
+        addDocumentWithAutoIncrement('AuthorizedAdults', {
+            AdultID: newCount,
+            FirstName: "Derek",
+            LastName: "Riley",
+            Phone: "812-345-4383",
+            Relationship: "Father",
+            ChildID: 2
+        });
+        console.log(`Added adult with ID: ${newCount}`);
+
+        //Classes
+        addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Monday",
+            ClassTime: "0900",
+            ClassInstructor: "Alice"
+        });
+        console.log(`Added class with ID: ${newCount}`);
+
+        //ClassEnrollments
+        addDocumentWithAutoIncrement('Classes', {
+            EnrollmentID: newCount,
+            ClassID: 1, 
+            MemberID: 1
+        });
+        console.log(`Added enrollment with ID: ${newCount}`);
+        
+        //JournalEntry
+        addDocumentWithAutoIncrement('JournalEntries', {
+            EntryID: newCount,
+            EntryDate: new Date(),
+            Entry: "Treadmill 20 minutes, machines 30 minutes, spin bike 20 minutes",
+            MemberID: 1
+        });
+        console.log(`Added entry with ID: ${newCount}`);
+        
+        //LoginInfo
+        addDocumentWithAutoIncrement('JournalEntries', {
+            loginID: newCount,
+            User: "AlexR99",
+            Pass: "Password1*",
+            MemberID: 1
+        });
+        console.log(`Added login with ID: ${newCount}`);
+        
+
+
