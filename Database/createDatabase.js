@@ -161,12 +161,306 @@ const database = firebase.firestore(); //Use firestore for database operations
         });
 
         //Classes
+            //Monday
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Water Aerobics",
+            ClassDay: "Monday",
+            ClassTime: "0900",
+            ClassInstructor: "Alice",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Sunday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Jazzercise",
+            ClassDay: "Monday",
+            ClassTime: "1100",
+            ClassInstructor: "Janice",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Sunday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Water Aerobics",
+            ClassDay: "Monday",
+            ClassTime: "1430",
+            ClassInstructor: "Jordan",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Sunday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "HIIT",
+            ClassDay: "Monday",
+            ClassTime: "1530",
+            ClassInstructor: "Jason",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Sunday"
+        });
         await addDocumentWithAutoIncrement('Classes', {
             ClassID: newCount,
             ClassName: "Yoga",
             ClassDay: "Monday",
+            ClassTime: "1700",
+            ClassInstructor: "Aaron",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Sunday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "HIIT",
+            ClassDay: "Monday",
+            ClassTime: "1900",
+            ClassInstructor: "Becca",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Sunday"
+        });
+
+        //Tuesday
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Pilates",
+            ClassDay: "Tuesday",
+            ClassTime: "1000",
+            ClassInstructor: "Ramona",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Monday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "HIIT",
+            ClassDay: "Tuesday",
+            ClassTime: "1200",
+            ClassInstructor: "Georgia",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Monday"
+        });
+
+        //Wednesday
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Zumba",
+            ClassDay: "Wednesday",
             ClassTime: "0900",
-            ClassInstructor: "Alice"
+            ClassInstructor: "Jaqueline",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Tuesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Wednesday",
+            ClassTime: "1100",
+            ClassInstructor: "Aaron",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Tuesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Pilates",
+            ClassDay: "Wednesday",
+            ClassTime: "1430",
+            ClassInstructor: "Max",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Tuesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Wednesday",
+            ClassTime: "1530",
+            ClassInstructor: "Jeanie",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Tuesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Water Aerobics",
+            ClassDay: "Wednesday",
+            ClassTime: "1700",
+            ClassInstructor: "Jamie",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Tuesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Wednesday",
+            ClassTime: "1900",
+            ClassInstructor: "Carly",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Tuesday"
+        });
+
+        //Thursday
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Zumba",
+            ClassDay: "Thursday",
+            ClassTime: "1000",
+            ClassInstructor: "Karen",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Wednesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "HIIT",
+            ClassDay: "Thursday",
+            ClassTime: "1100",
+            ClassInstructor: "Garrett",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Wednesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Thursday",
+            ClassTime: "1200",
+            ClassInstructor: "Lauren",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Wednesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Kickboxing",
+            ClassDay: "Thursday",
+            ClassTime: "1430",
+            ClassInstructor: "Barbara",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Wednesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Water Aerobics",
+            ClassDay: "Thursday",
+            ClassTime: "1000",
+            ClassInstructor: "Jackson",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Wednesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Pilates",
+            ClassDay: "Thursday",
+            ClassTime: "1000",
+            ClassInstructor: "Brandon",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Wednesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Water Dance",
+            ClassDay: "Thursday",
+            ClassTime: "1000",
+            ClassInstructor: "Sky",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Wednesday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Thursday",
+            ClassTime: "1900",
+            ClassInstructor: "Jen",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Wednesday"
+        });
+
+        //Friday
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Friday",
+            ClassTime: "0900",
+            ClassInstructor: "Billie",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Thursday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Kickboxing",
+            ClassDay: "Friday",
+            ClassTime: "1100",
+            ClassInstructor: "Jeff",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Thursday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Water Aerobics",
+            ClassDay: "Friday",
+            ClassTime: "1200",
+            ClassInstructor: "Michael",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Thursday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Kickboxing",
+            ClassDay: "Friday",
+            ClassTime: "1530",
+            ClassInstructor: "Randy",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Thursday"
+        });
+
+        //Saturday
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Pilates",
+            ClassDay: "Saturday",
+            ClassTime: "0900",
+            ClassInstructor: "Nate",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Friday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Water Aerobics",
+            ClassDay: "Saturday",
+            ClassTime: "1000",
+            ClassInstructor: "Ben",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Friday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Saturday",
+            ClassTime: "1430",
+            ClassInstructor: "Sarah",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Friday"
+        });
+
+        //Sunday
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Yoga",
+            ClassDay: "Sunday",
+            ClassTime: "1000",
+            ClassInstructor: "Brenda",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Saturday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Zumba",
+            ClassDay: "Sunday",
+            ClassTime: "1200",
+            ClassInstructor: "Jace",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Saturday"
+        });
+        await addDocumentWithAutoIncrement('Classes', {
+            ClassID: newCount,
+            ClassName: "Pilates",
+            ClassDay: "Sunday",
+            ClassTime: "1530",
+            ClassInstructor: "Parker",
+            MaxCapacity: 20,
+            EnrollmentDeadline: "Saturday"
         });
 
         //ClassEnrollments

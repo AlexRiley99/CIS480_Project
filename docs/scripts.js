@@ -9,8 +9,11 @@ function handleSearch(){
         searchQuery.includes("yoga") || searchQuery.includes("pilates") ||
         searchQuery.includes("hiit") || searchQuery.includes("water") || 
         searchQuery.includes("dance") || searchQuery.includes("aerobics") ||
-        searchQuery.includes("zumba") || searchQuery.includes("jazzercise")
+        searchQuery.includes("zumba") || searchQuery.includes("jazzercise") && currentPath.includes(index.html)
     ){
+        if(!currentPath.includes("index.html")){//Different path to Classes.html if user is not using search bar on Home page
+            window.location.href = "../ClassesPage/Classes.html";
+        }
         if(!currentPath.includes("Classes.html")){
             window.location.href = "ClassesPage/Classes.html"; //redirect to classes
         }
