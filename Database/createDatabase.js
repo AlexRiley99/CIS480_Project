@@ -1,4 +1,4 @@
-/*Firebase Configuration*/
+/********Firebase Configuration*********/
 // Import functions 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
@@ -18,9 +18,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = firebase.firestore(); //Use firestore for database operations
+const database = getFirestore(app); //Use firestore for database operations
 
-//Counter
+/*********************************************************************/
+//Functions
     //Using transactions makes it so that if multiple users
     //add something to the database, it won't mess up the counter
 
@@ -52,37 +53,79 @@ const database = firebase.firestore(); //Use firestore for database operations
     });
 
     console.log(`Added document to ${collectionName} with auto-incremented ID. ID = ${newCount}`);
+    return newCount;
 }
 
+//Get day of the week for class enrollment validation
+function getDayOfWeek(date){
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return days[date.getDay()];
+}
 
+//Validate class enrollments
+async function canEnroll(classID){
+    const classRef = doc(database, 'Classes', classID);
+    const classDoc = await getDoc(classRef);
+
+    if(!classDoc.exists()){
+        console.error("Class does not exist.");
+        return false;
+    }
+
+    const { MaxCapacity, EnrollmentDeadline, ClassDate } = classDoc.data();
+    const currentEnrollments = await getEnrollmentsForClass(classID);
+
+    //get current day
+    const currentDay = getDayOfWeek(new Date());
+
+    //check max capacity
+    if (currentEnrollments.length >= MaxCapacity) {
+        console.log("Cannot enroll: Maximum capacity reached.");
+        return false;
+    }
+
+    //check if current day is past deadline
+    const isPastDeadline = (currentDay === EnrollmentDeadline);
+
+    if(isPastDeadline){
+        console.log("Cannot enroll: Enrollment deadline has passed for this class. Please try again in 48 hours.");
+        return false;
+    }
+    return true;
+}
+
+    
+/******************************************************************/
 //Add data to Firestore
 (async () => {
-        //Plans
-        await await addDocumentWithAutoIncrement('Plans', {
-            PlanID: newCount,
-            PlanName: "Silver Plan",
-            PlanCost: 19.99
-        });
+    //Create an array of plans
+    const plans = [
+        { PlanName: "Silver Plan", PlanCost: 19.99 },
+        { PlanName: "Gold Plan", PlanCost: 29.99 },
+        { PlanName: "Platinum Plan", PlanCost: 39.99 },
+        { PlanName: "Diamond Plan", PlanCost: 49.99 }
+    ];
+    // Function to add multiple plans
+    async function addPlans() {
+        try {
+            // Create an array of promises using map
+            const planPromises = plans.map(async (plan) => {
+                // Call addDocumentWithAutoIncrement for each plan
+                return await addDocumentWithAutoIncrement('Plans', plan);
+            });
 
-        await await addDocumentWithAutoIncrement('Plans', {
-            PlanID: newCount,
-            PlanName: "Gold Plan",
-            PlanCost: 29.99
-        });
-
-        await await addDocumentWithAutoIncrement('Plans', {
-            PlanID: newCount,
-            PlanName: "Platinum Plan",
-            PlanCost: 39.99
-        });
-
-        await addDocumentWithAutoIncrement('Plans', {
-            PlanID: newCount,
-            PlanName: "Diamond Plan",
-            PlanCost: 49.99
-        });
+            // Wait for all promises to resolve
+            const planIDs = await Promise.all(planPromises);
+            console.log(`Plans added with IDs: ${planIDs}`);
+        } catch (error) {
+            console.error("Error adding plans:", error);
+        }
+    }
+    // Call the function to add plans
+    addPlans();
         
-        //Member
+
+        //Members
         await addDocumentWithAutoIncrement('Members', {
             MemberID: newCount,
             FirstName: "Alex",
