@@ -1,7 +1,9 @@
 /*Search Bar Functionality*/
 function handleSearch(){
     let searchQuery = document.getElementById('searchQuery').value.toLowerCase(); //get input value
-    
+    const currentPath = window.location.pathname; //get current path
+    let Message = document.getElementById('message');
+
     //redirect based on keywords
     if(searchQuery.includes("class") || searchQuery.includes("boxing") ||
         searchQuery.includes("yoga") || searchQuery.includes("pilates") ||
@@ -9,21 +11,36 @@ function handleSearch(){
         searchQuery.includes("dance") || searchQuery.includes("aerobics") ||
         searchQuery.includes("zumba") || searchQuery.includes("jazzercise")
     ){
-        window.location.href = "/ClassesPage/Classes.html"; //redirect to classes
+        if(!currentPath.includes("Classes.html")){
+            window.location.href = "ClassesPage/Classes.html"; //redirect to classes
+        }
+        else{
+            Message.textContent = "Search result can be found on the page that you are currently visiting";
+        }
     }
     else if(searchQuery.includes("hours") || searchQuery.includes("childcare") ||
         searchQuery.includes("operation") || searchQuery.includes("contact") 
         ){
-        window.location.href = "../index.html"; //redirect to landing page
+            if(!currentPath.includes("index.html")){
+                window.location.href = "index.html"; //redirect to landing page
+            }
+            else{
+                Message.textContent = "Search result can be found on the page that you are currently visiting";
+            }
     }
     else if(searchQuery.includes("log") || searchQuery.includes("account") ||
     searchQuery.includes("create")
         ){
-        window.location.href = "/login"; //redirect to login page
+            if(!currentPath.includes("index.html")){
+                window.location.href = "LoginPage/Login.html"; //redirect to login page
+            }
+            else{
+                Message.textContent = "Search result can be found on the page that you are currently visiting";
+            }
+        
     }
     else{
-        let noResult = document.getElementById('noResult');
-        noResult.textContent = "No results found"
+        Message.textContent = "No results found for that search term"
     }
 
 }
