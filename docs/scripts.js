@@ -1,3 +1,7 @@
+/******************************************
+ * Similar to styles.css, this JavaScript file is only for things that pertain to
+ * all pages, such as the search bar
+ */
 /*Search Bar Functionality*/
 function handleSearch(){
     let searchQuery = document.getElementById('searchQuery').value.toLowerCase(); //get input value

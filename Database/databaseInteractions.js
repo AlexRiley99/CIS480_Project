@@ -1,3 +1,7 @@
+/*************************************************
+ * This JavaScript file is for managing database interactions 
+ * using Firebase/FireStore
+ */
 /********Firebase Configuration*********/
 // Import functions 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
@@ -20,8 +24,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app); //Use firestore for database operations
 
+/******Bcrypt for hashing passwords******/
+const bcrypt = require('bcrypt');
 /*********************************************************************/
-//Functions
+//Database Functions
     //Using transactions makes it so that if multiple users
     //add something to the database, it won't mess up the counter
 
@@ -94,74 +100,350 @@ async function canEnroll(classID){
     return true;
 }
 
-    
+// Function to add Plans
+async function addPlans() {
+    try {
+        // Create an array of promises using map
+        const planPromises = Plans.map(async (plan) => {
+            // Call addDocumentWithAutoIncrement for each plan
+            return await addDocumentWithAutoIncrement('Plans', plan);
+        });
+
+        // Wait for all promises to resolve
+        const planIDs = await Promise.all(planPromises);
+        console.log(`Plans added with IDs: ${planIDs}`);
+    } catch (error) {
+        console.error("Error adding Plans:", error);
+    }
+}
+// Call function
+addPlans();
+
+// Function to add Members from code
+async function addMembers() {
+    try {
+        const memberPromises = Members.map(async (member) => {
+            return await addDocumentWithAutoIncrement('Members', member);
+        });
+        
+        const memberIDs = await Promise.all(memberPromises);
+        console.log(`Members added with IDs: ${memberIDs}`);
+    } catch (error) {
+        console.error("Error adding Members:", error);
+    }
+}
+//Call function
+addMembers();
+
+// Function to add Children from code
+async function addChildren() {
+    try {
+        const childPromises = Children.map(async (child) => {
+            return await addDocumentWithAutoIncrement('Children', child);
+        });
+
+        const childIDs = await Promise.all(childPromises);
+        console.log(`Children added with IDs: ${childIDs}`);
+    } catch (error) {
+        console.error("Error adding Children:", error);
+    }
+}
+//Call function
+addChildren(); 
+
+/*********************Sign Up Form****************************/
+//Add member from signup form
+    //Hash password
+async function hashPassword(password) {
+    const saltRounds = 10; // The number of rounds for hashing
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    return hashedPassword;
+}
+
+
+document.getElementById('signupForm').addEventListener('submit', handleSignup);
+
+async function handleSignup(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Gather data from form fields
+    const memberInfo = {
+        FirstName: document.getElementById('firstName').value,
+        LastName: document.getElementById('lastName').value,
+        Phone: document.getElementById('phone').value,
+        Email: document.getElementById('email').value,
+        JoinDate: new Date(), // Current date
+        Address1: document.getElementById('addr1').value,
+        Address2: document.getElementById('addr2').value,
+        City: document.getElementById('city').value,
+        State: document.getElementById('state').value,
+        ZipCode: document.getElementById('zip').value,
+        PlanID: getPlanID()
+    };
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const error = document.getElementById('error').value;
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        error.textContent = "*Passwords do not match";
+        return;
+    }
+
+    try {
+        const hashedPassword = await hashPassword(password); //Hash password
+
+        // Add member info to Members collection
+        const memberID = await addDocumentWithAutoIncrement('Members', memberInfo);
+        
+        // Add login info
+        const loginInfo = {
+            loginID: newCount, 
+            User: username,
+            Pass: hashedPassword, //Never save the user's actual password
+            MemberID: memberID
+        };
+        
+        await addDocumentWithAutoIncrement('LoginInfo', loginInfo); 
+
+        alert(`Member added! Your Member ID is: ${memberID}. Remember this number, as you will need it to log in.`);
+    } catch (error) {
+        alert("Error adding member. Please ensure all data is added correctly. If so, please contact admin for assistance.");
+    }
+}
+
+
+//Function to get plan ID based on user's selected plan
+function getPlanID(){
+    const planSelect = document.getElementById('Plans');
+    return Array.from(planSelect.options).find(option => option.selected).value;
+}
+
+/************************New Child Form**************************/
+//Add child from New Child form
+const dob = new Date(document.getElementById('dob').value);
+const consentDate = new Date(document.getElementById('consentDate').value);
+const disclosureDate = new Date(document.getElementById('disclosureDate').value);
+
+async function handleNewChild(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Gather data from the form fields
+    const dob = new Date(document.getElementById('dob').value);
+    const consentDate = new Date(document.getElementById('consentDate').value);
+    const disclosureDate = new Date(document.getElementById('disclosureDate').value);
+
+    const childData = {
+        FirstName: document.getElementById('firstName').value,
+        LastName: document.getElementById('lastName').value,
+        DateOfBirth: dob,
+        Nickname: document.getElementById('nickname').value,
+        Allergies: document.getElementById('allergies').value,
+        EpiPen: document.getElementById('epipen').value,
+        Disabilities: document.getElementById('disabilities').value,
+        Accommodations: document.getElementById('accommodations').value,
+        ConsentSignature: document.getElementById('consentSignature').value,
+        ConsentDate: consentDate,
+        DisclosureSignature: document.getElementById('disclosureSignature').value,
+        DisclosureDate: disclosureDate
+    };
+
+        // Add child data
+        const childID = await addDocumentWithAutoIncrement('Children', childData);
+        console.log(`Child added with ID: ${childID}`);
+
+        // Gather and add emergency contacts
+        const emergencyContacts = [
+            {
+                FirstName: document.getElementById('c1FirstName').value,
+                LastName: document.getElementById('c1LastName').value,
+                Phone: document.getElementById('c1Phone').value,
+                Relationship: document.getElementById('c1Relationship').value,
+                ChildID: childID // Reference to the child's ID
+            },
+            {
+                FirstName: document.getElementById('c2FirstName').value,
+                LastName: document.getElementById('c2LastName').value,
+                Phone: document.getElementById('c2Phone').value,
+                Relationship: document.getElementById('c2Relationship').value,
+                ChildID: childID // Reference to the child's ID
+            },
+            {
+                FirstName: document.getElementById('c3FirstName').value,
+                LastName: document.getElementById('c3LastName').value,
+                Phone: document.getElementById('c3Phone').value,
+                Relationship: document.getElementById('c3Relationship').value,
+                ChildID: childID // Reference to the child's ID
+            }
+        ];
+
+        // Loop through each emergency contact and add it to Firestore
+        for (const contact of emergencyContacts) {
+            if (contact.FirstName || contact.LastName || contact.Phone) { // Check if at least some data is provided
+                await addEmergencyContact(contact);
+            }
+        }
+
+        // Gather and add authorized adults
+        const authorizedAdults = [
+            {
+                FirstName: document.getElementById('aa1FirstName').value,
+                LastName: document.getElementById('aa1LastName').value,
+                Phone: document.getElementById('aa1Phone').value,
+                Relationship: document.getElementById('aa1Relationship').value,
+                ChildID: childID // Reference to the child's ID
+            },
+            {
+                FirstName: document.getElementById('aa2FirstName').value,
+                LastName: document.getElementById('aa2LastName').value,
+                Phone: document.getElementById('aa2Phone').value,
+                Relationship: document.getElementById('aa2Relationship').value,
+                ChildID: childID // Reference to the child's ID
+            },
+            {
+                FirstName: document.getElementById('aa3FirstName').value,
+                LastName: document.getElementById('aa3LastName').value,
+                Phone: document.getElementById('aa3Phone').value,
+                Relationship: document.getElementById('aa3Relationship').value,
+                ChildID: childID // Reference to the child's ID
+            }
+        ];
+
+        // Loop through each authorized adult and add it to Firestore
+        for (const adult of authorizedAdults) {
+            if (adult.FirstName || adult.LastName || adult.Phone) { // Check if at least some data is provided
+                await addAuthorizedAdult(adult);
+            }
+        }
+}
+
+//Call function to add child to Firestore
+try{
+    const childID = await addDocumentWithAutoIncrement('Children', childInfo);
+    alert("Child added successfully!");
+}catch (error){
+    alert("Error adding child. Please ensure all data is added correctly. If so, please contact admin for assistance.");
+}
+
+//Add Emergency Contact from New Child form
+async function addEmergencyContact(contactData) {
+    return await addDocumentWithAutoIncrement('EmergencyContacts', contactData);
+}
+
+//Add Authorized Adult from New Child form
+async function addAuthorizedAdult(adultData) {
+    return await addDocumentWithAutoIncrement('AuthorizedAdults', adultData);
+}
+
+/**************************Login******************************/
+async function verifyPassword(inputPassword, storedHashedPassword) {
+    const match = await bcrypt.compare(inputPassword, storedHashedPassword);
+    return match; // Returns true if passwords match, false otherwise
+}
+
+async function handleLogin(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get user input
+    const username = document.getElementById('username').value;
+    const inputPassword = document.getElementById('password').value;
+    const inputMemberID = document.getElementById('memberid').value; 
+
+    // Fetch the user's hashed password and member ID from the database
+    const { hashedPassword, memberID } = await getUserCredentials(username); 
+
+    // Validate member ID
+    if (memberID !== inputMemberID) {
+        document.getElementById('error').textContent = "*Invalid member ID. Please try again.";
+        return;
+    }
+
+    // Verify password
+    if (await verifyPassword(inputPassword, hashedPassword)) {
+        window.location.href = "../AccountPage/Account.html";
+    } else {
+        document.getElementById('error').textContent = "*Invalid username, password, or Member ID. Please try again.";
+    }
+}
+
+
 /******************************************************************/
 //Add data to Firestore
 (async () => {
-    //Create an array of plans
-    const plans = [
+    //Create an array of Plans
+    const Plans = [
         { PlanName: "Silver Plan", PlanCost: 19.99 },
         { PlanName: "Gold Plan", PlanCost: 29.99 },
         { PlanName: "Platinum Plan", PlanCost: 39.99 },
         { PlanName: "Diamond Plan", PlanCost: 49.99 }
-    ];
-    // Function to add multiple plans
-    async function addPlans() {
-        try {
-            // Create an array of promises using map
-            const planPromises = plans.map(async (plan) => {
-                // Call addDocumentWithAutoIncrement for each plan
-                return await addDocumentWithAutoIncrement('Plans', plan);
-            });
-
-            // Wait for all promises to resolve
-            const planIDs = await Promise.all(planPromises);
-            console.log(`Plans added with IDs: ${planIDs}`);
-        } catch (error) {
-            console.error("Error adding plans:", error);
-        }
-    }
-    // Call the function to add plans
-    addPlans();
-        
+    ];   
 
         //Members
-        await addDocumentWithAutoIncrement('Members', {
-            MemberID: newCount,
-            FirstName: "Alex",
-            LastName: "Riley",
-            Phone: "843-714-8829",
-            Email: "aleril0593@students.ecpi.edu",
-            JoinDate: new Date(),
-            Address1: "311 Macgregor Dr",
-            City: "Summerville",
-            State: "South Carolina",
-            ZipCode: "29486",
-            PlanID: 1
-        });
-    
+        //Array of Members
+        const Members = [
+            {
+                FirstName: "Alex",
+                LastName: "Riley",
+                Phone: "843-714-8829",
+                Email: "aleril0593@students.ecpi.edu",
+                JoinDate: new Date(),
+                Address1: "311 Macgregor Dr",
+                Address2: "",
+                City: "Summerville",
+                State: "South Carolina",
+                ZipCode: "29486",
+                PlanID: 1
+            }
+        ];
+
         //Children
-        await addDocumentWithAutoIncrement('Children', {
-            ChildID: newCount,
-            FirstName: "Marceline",
-            LastName: "Riley",
-            EnrollmentDate: new Date(),
-            Allergies: "None",
-            EpiPen: false,
-            Disabilities: "None",
-            Accommodations: "None",
-            MemberID: 1
-        });
+        //Array of Children
+        const Children = [
+    {
+        FirstName: "Marceline",
+        LastName: "Riley",
+        DateOfBirth: 1/21/2021,
+        Nickname: "Marcie",
+        EnrollmentDate: new Date(),
+        Allergies: "",
+        EpiPen: false,
+        Disabilities: "",
+        Accommodations: "",
+        ConsentSignature: "Alex R. Riley",
+        ConsentDate: 10/17/2024,
+        DisclosureSignature: "Alex R. Riley",
+        DisclosureDate: 10/17/2024,
+        MemberID: 1
+    },
+    {
+        FirstName: "Jovie",
+        LastName: "Riley",
+        DateOfBirth: 5/4/2023,
+        Nickname: "Jojo",
+        EnrollmentDate: new Date(),
+        Allergies: "",
+        EpiPen: false,
+        Disabilities: "",
+        Accommodations: "",
+        ConsentSignature: "Alex R. Riley",
+        ConsentDate: 10/17/2024,
+        DisclosureSignature: "Alex R. Riley",
+        DisclosureDate: 10/17/2024,
+        MemberID: 1
+    }
+];
         
         await addDocumentWithAutoIncrement('Children', {
             ChildID: newCount,
             FirstName: "Jovie",
             LastName: "Riley",
             EnrollmentDate: new Date(),
-            Allergies: "None",
+            Allergies: "",
             EpiPen: false,
-            Disabilities: "None",
-            Accommodations: "None",
+            Disabilities: "",
+            Accommodations: "",
             MemberID: 1
         });
 
@@ -507,29 +789,39 @@ async function canEnroll(classID){
         });
 
         //ClassEnrollments
-        await addDocumentWithAutoIncrement('Classes', {
-            EnrollmentID: newCount,
-            ClassID: 1, 
-            MemberID: 1
-        });
+        //Array of enrollents
+        const ClassEnrollments = [
+            {
+                EnrollmentID: newCount,
+                EnrollmentDay: currentDay,
+                ClassID: 1, 
+                MemberID: 1
+            }
+        ];
         
-        //JournalEntry
-        await addDocumentWithAutoIncrement('JournalEntries', {
-            EntryID: newCount,
-            EntryDate: new Date(),
-            Entry: "Treadmill 20 minutes, machines 30 minutes, spin bike 20 minutes",
-            MemberID: 1
-        });
+        
+        //JournalEntries
+            //Array of entries
+        const JournalEntries = [
+            {
+                EntryID: newCount,
+                EntryDate: new Date(),
+                Entry: "Treadmill 20 minutes, machines 30 minutes, spin bike 20 minutes",
+                MemberID: 1
+            }
+        ];
+        
         
         //LoginInfo
-        await addDocumentWithAutoIncrement('JournalEntries', {
-            loginID: newCount,
-            User: "AlexR99",
-            Pass: "Password1*",
-            MemberID: 1
-        });
+            //Array of login info
+        const LoginInfo = [
+            {
+                loginID: newCount,
+                User: "AlexR99",
+                Pass: "Password1*",
+                MemberID: 1
+            }
+        ];
 })();
         
-        
-
 
