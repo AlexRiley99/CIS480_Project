@@ -21,9 +21,19 @@ const app = initializeApp(firebaseConfig);
 const database = firebase.firestore(); //Use firestore for database operations
 
 //Counter
-    //Function using transactions makes it so that if multiple users
+    //Using transactions makes it so that if multiple users
     //add something to the database, it won't mess up the counter
-async function addDocumentWithAutoIncrement(collectionName, data) {
+
+    //Initialize counter if it doesn't exist
+    async function initializeCounter(counterRef){
+        const counterDoc = await getDoc(counterRef);
+        if(!counterDoc.exists()){
+            await setDoc(counterRef, { count: 0 });
+        }
+    }
+
+    //Add document with auto-incremented ID
+    async function addDocumentWithAutoIncrement(collectionName, data) {
     const counterRef = db.collection('counters').doc(`${collectionName}Counter`);
 
     await initializeCounter(counterRef);
@@ -37,44 +47,43 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
             ...data,
             [`${collectionName}ID`]: newCount // Set the auto-incremented ID
         });
+
+        return newCount;
     });
 
-    console.log(`Added document to ${collectionName} with auto-incremented ID.`);
+    console.log(`Added document to ${collectionName} with auto-incremented ID. ID = ${newCount}`);
 }
 
 
 //Add data to Firestore
+(async () => {
         //Plans
-        addDocumentWithAutoIncrement('Plans', {
+        await await addDocumentWithAutoIncrement('Plans', {
             PlanID: newCount,
             PlanName: "Silver Plan",
             PlanCost: 19.99
         });
-        console.log(`Added plan with ID: ${newCount}`);
 
-        addDocumentWithAutoIncrement('Plans', {
+        await await addDocumentWithAutoIncrement('Plans', {
             PlanID: newCount,
             PlanName: "Gold Plan",
             PlanCost: 29.99
         });
-        console.log(`Added plan with ID: ${newCount}`);
 
-        addDocumentWithAutoIncrement('Plans', {
+        await await addDocumentWithAutoIncrement('Plans', {
             PlanID: newCount,
             PlanName: "Platinum Plan",
             PlanCost: 39.99
         });
-        console.log(`Added plan with ID: ${newCount}`);
 
-        addDocumentWithAutoIncrement('Plans', {
+        await addDocumentWithAutoIncrement('Plans', {
             PlanID: newCount,
             PlanName: "Diamond Plan",
             PlanCost: 49.99
         });
-        console.log(`Added plan with ID: ${newCount}`);
         
         //Member
-        addDocumentWithAutoIncrement('Members', {
+        await addDocumentWithAutoIncrement('Members', {
             MemberID: newCount,
             FirstName: "Alex",
             LastName: "Riley",
@@ -87,10 +96,9 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
             ZipCode: "29486",
             PlanID: 1
         });
-        console.log(`Added member with ID: ${newCount}`);
     
         //Children
-        addDocumentWithAutoIncrement('Children', {
+        await addDocumentWithAutoIncrement('Children', {
             ChildID: newCount,
             FirstName: "Marceline",
             LastName: "Riley",
@@ -101,9 +109,8 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
             Accommodations: "None",
             MemberID: 1
         });
-        console.log(`Added child with ID: ${newCount}`);
         
-        addDocumentWithAutoIncrement('Children', {
+        await addDocumentWithAutoIncrement('Children', {
             ChildID: newCount,
             FirstName: "Jovie",
             LastName: "Riley",
@@ -114,10 +121,9 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
             Accommodations: "None",
             MemberID: 1
         });
-        console.log(`Added child with ID: ${newCount}`);
 
         //EmergencyContacts
-        addDocumentWithAutoIncrement('EmergencyContacts', {
+        await addDocumentWithAutoIncrement('EmergencyContacts', {
             ContactID: newCount,
             FirstName: "Derek",
             LastName: "Riley",
@@ -125,9 +131,8 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
             Relationship: "Father",
             ChildID: 1
         });
-        console.log(`Added contact with ID: ${newCount}`);
         
-        addDocumentWithAutoIncrement('EmergencyContacts', {
+        await addDocumentWithAutoIncrement('EmergencyContacts', {
             ContactID: newCount,
             FirstName: "Derek",
             LastName: "Riley",
@@ -135,10 +140,9 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
             Relationship: "Father",
             ChildID: 1
         });
-        console.log(`Added contact with ID: ${newCount}`);
 
         //AuthorizedAdults
-        addDocumentWithAutoIncrement('AuthorizedAdults', {
+        await addDocumentWithAutoIncrement('AuthorizedAdults', {
             AdultID: newCount,
             FirstName: "Derek",
             LastName: "Riley",
@@ -146,9 +150,8 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
             Relationship: "Father",
             ChildID: 1
         });
-        console.log(`Added adult with ID: ${newCount}`);
 
-        addDocumentWithAutoIncrement('AuthorizedAdults', {
+        await addDocumentWithAutoIncrement('AuthorizedAdults', {
             AdultID: newCount,
             FirstName: "Derek",
             LastName: "Riley",
@@ -156,43 +159,40 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
             Relationship: "Father",
             ChildID: 2
         });
-        console.log(`Added adult with ID: ${newCount}`);
 
         //Classes
-        addDocumentWithAutoIncrement('Classes', {
+        await addDocumentWithAutoIncrement('Classes', {
             ClassID: newCount,
             ClassName: "Yoga",
             ClassDay: "Monday",
             ClassTime: "0900",
             ClassInstructor: "Alice"
         });
-        console.log(`Added class with ID: ${newCount}`);
 
         //ClassEnrollments
-        addDocumentWithAutoIncrement('Classes', {
+        await addDocumentWithAutoIncrement('Classes', {
             EnrollmentID: newCount,
             ClassID: 1, 
             MemberID: 1
         });
-        console.log(`Added enrollment with ID: ${newCount}`);
         
         //JournalEntry
-        addDocumentWithAutoIncrement('JournalEntries', {
+        await addDocumentWithAutoIncrement('JournalEntries', {
             EntryID: newCount,
             EntryDate: new Date(),
             Entry: "Treadmill 20 minutes, machines 30 minutes, spin bike 20 minutes",
             MemberID: 1
         });
-        console.log(`Added entry with ID: ${newCount}`);
         
         //LoginInfo
-        addDocumentWithAutoIncrement('JournalEntries', {
+        await addDocumentWithAutoIncrement('JournalEntries', {
             loginID: newCount,
             User: "AlexR99",
             Pass: "Password1*",
             MemberID: 1
         });
-        console.log(`Added login with ID: ${newCount}`);
+})();
+        
         
 
 
