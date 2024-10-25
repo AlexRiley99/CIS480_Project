@@ -14,43 +14,25 @@ function handleSearch(){
         searchQuery.includes("hiit") || searchQuery.includes("water") || 
         searchQuery.includes("dance") || searchQuery.includes("aerobics") ||
         searchQuery.includes("zumba") || searchQuery.includes("jazzercise") && currentPath.includes(index.html)
-    ){
-        if(!currentPath.includes("index.html")){//Different path to Classes.html if user is not using search bar on Home page
+    ){//Redirect to Classes
             window.location.href = "../ClassesPage/Classes.html";
-        }
-        else if(!currentPath.includes("Classes.html")){
-            window.location.href = "ClassesPage/Classes.html"; //redirect to classes
-        }
-        else{
-            Message.textContent = "*Result for that search term can be found on the page that you are currently visiting";
-        }
     }
     else if(searchQuery.includes("hours") || searchQuery.includes("childcare") ||
         searchQuery.includes("operation") || searchQuery.includes("contact") 
-        ){
-            if(!currentPath.includes("index.html")){
-                window.location.href = "../index.html"; //redirect to landing page
-            }
-            else{
-                Message.textContent = "*Result for that search term can be found on the page that you are currently visiting";
-            }
+        ){//Searches found on the Home page
+        Message.textContent = "*Result for that search term can be found on the page that you are currently visiting";
     }
     else if(searchQuery.includes("log") || searchQuery.includes("account") ||
-    searchQuery.includes("create")
-        ){
-            if(!currentPath.includes("index.html")){//Different path to Classes.html if user is not using search bar on Home page
-                window.location.href = "../LoginPage/Login.html";
-            }
-            else if(!currentPath.includes("Login.html")){
-                window.location.href = "LoginPage/Login.html"; //redirect to classes
-            }
-            else{
-                Message.textContent = "*Result for that search term can be found on the page that you are currently visiting";
-            }
-        
+        searchQuery.includes("create") || searchQuery.includes("child") || 
+        searchQuery.includes("manage") || searchQuery.includes("change") ||searchQuery.includes("edit")
+        ){//Redirect to Login -- All pages for the above search results can only be accessed via a user account
+            window.location.href = "../LoginPage/Login.html";
+        }
+    else if(searchQuery.inclues("plan") || searchQuery.includes("membership") || searchQuery("sign")){//Redirect to Plans
+        window.location.href = "../PlansPage/Plans.html";
     }
-    else{
+    else{//No results found
         Message.textContent = "*No results found"
-    }
+    }//End of if...else
 
 }
