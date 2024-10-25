@@ -1,0 +1,16 @@
+#amenitiesDiv{
+    text-align: center;
+    border: 1px solid brown;
+    border-radius: 10px;
+    margin: auto;
+    width: 60%;
+    padding: 0;
+}
+#amenitiesList{
+    text-align: left;
+    list-style-type: disc;
+}
+#amenitiesHeader{
+    text-align: center;
+    text-decoration: underline;
+}
