@@ -15,7 +15,7 @@ function handleSearch(){
         searchQuery.includes("dance") || searchQuery.includes("aerobics") ||
         searchQuery.includes("zumba") || searchQuery.includes("jazzercise") && currentPath.includes(index.html)
     ){//Redirect to Classes
-            window.location.href = "../ClassesPage/Classes.html";
+            window.location.href = "ClassesPage/Classes.html";
     }
     else if(searchQuery.includes("hours") || searchQuery.includes("childcare") ||
         searchQuery.includes("operation") || searchQuery.includes("contact") 
@@ -26,10 +26,10 @@ function handleSearch(){
         searchQuery.includes("create") || searchQuery.includes("child") || 
         searchQuery.includes("manage") || searchQuery.includes("change") ||searchQuery.includes("edit")
         ){//Redirect to Login -- All pages for the above search results can only be accessed via a user account
-            window.location.href = "../LoginPage/Login.html";
+            window.location.href = "LoginPage/Login.html";
         }
     else if(searchQuery.inclues("plan") || searchQuery.includes("membership") || searchQuery("sign")){//Redirect to Plans
-        window.location.href = "../PlansPage/Plans.html";
+        window.location.href = "PlansPage/Plans.html";
     }
     else{//No results found
         Message.textContent = "*No results found"
