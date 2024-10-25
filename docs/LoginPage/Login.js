@@ -1,18 +1,16 @@
-/*
-//Log in button handler
-document.getElementById('loginBtn').addEventListener('click', LogIn);
 
-function LogIn(event){
+//Log in button handler
+function handleLogin(event){
     event.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const memberId = documetn.getElementById('memberid').value;
+    const memberId = document.getElementById('memberid').value;
 
     const myUsername = "AlexR99";
     const myPassword = "Password1*";
-    const myMemberId = 1;
+    const myMemberId = "1";
 
-    if(username === myUsername && password === myPassword){
+    if(username === myUsername && password === myPassword && memberId === myMemberId){
        window.location.href = "../AccountPage/Account.html";
     }
     else{
@@ -20,4 +18,4 @@ function LogIn(event){
     }
 
 }
-*/
+

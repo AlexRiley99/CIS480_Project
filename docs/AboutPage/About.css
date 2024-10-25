@@ -1,16 +1,19 @@
-#amenitiesDiv{
-    text-align: center;
-    border: 1px solid brown;
-    border-radius: 10px;
-    margin: auto;
-    width: 60%;
-    padding: 0;
-}
-#amenitiesList{
+#amenitiesDiv, #signupDiv{
     text-align: left;
+    margin: 10px auto;
+    padding: 5px;
+    width: 60%;
+}
+#signupDiv{
+    border: 1px solid rgb(108, 74, 11);
+    border-radius: 10px;
+}
+ul{
     list-style-type: disc;
 }
-#amenitiesHeader{
-    text-align: center;
-    text-decoration: underline;
+h3{
+    font-weight: lighter;
+}
+h1, h2, h3{
+    margin: 0;
 }
