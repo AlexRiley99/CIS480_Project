@@ -31,6 +31,11 @@ function handleSearch(){
     else if(searchQuery.inclues("plan") || searchQuery.includes("membership") || searchQuery("sign")){//Redirect to Plans
         window.location.href = "PlansPage/Plans.html";
     }
+    else if(searchQuery.includes("who") || searchQuery.includes("what") || searchQuery.includes("where")
+        || searchQuery.includes("when") || searchQuery.includes("why") || searchQuery.includes("how")){
+            //Redirect to About page
+        window.location.href = "AboutPage/About.html";
+    }
     else{//No results found
         Message.textContent = "*No results found"
     }//End of if...else
