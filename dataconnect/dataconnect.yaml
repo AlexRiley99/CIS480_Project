@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "CIS480_Project"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "CIS480_Project-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
