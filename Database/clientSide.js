@@ -74,64 +74,41 @@ async function addDocumentWithAutoIncrement(collectionName, data) {
 
 //New Member Submission Handler
 document.getElementById('signupForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); // Prevent page reload
-    const Plan = document.getElementById('plans').value;
+    e.preventDefault();
+
+    const PlanID = document.getElementById('plans').value;
     const FirstName = document.getElementById('firstName').value;
     const LastName = document.getElementById('lastName').value;
     const Email = document.getElementById('email').value;
     const Phone = document.getElementById('phone').value;
-    const Username = document.getElementById('username').value;
-    const Password = document.getElementById('password').value;
-    const ConfirmPassword = document.getElementById('confirmPassword').value;
-    const CardNumber = document.getElementById('cardNumber').value;
     const Addr1 = document.getElementById('addr1').value;
     const Addr2 = document.getElementById('addr2').value;
     const City = document.getElementById('city').value;
     const State = document.getElementById('state').value;
     const ZipCode = document.getElementById('zip').value;
-    const Error = document.getElementById('message');
-
-    //Get PlanID based on plan selection
-    if(Plan.value == 'silverPlan'){
-        PlanID == "Plans/1";
-    }
-    else if(Plan.value == 'goldPlan'){
-        PlanID == "Plans/2";
-    }
-    else if(Plan.value == 'platinumPlan'){
-        PlanID == "Plans/3";
-    }
-    else if(Plan.value == 'diamondPlan'){
-        PlanID == "Plans/4"
-    }
-
-    if (!Plan){//Check that Plan and State are not null
-        Error.textContent = "*Must select a plan before submitting";
-        return; 
-    }
-    else if(!Select){
-        Error.textContent = "*Must select a state before submitting";
-        return;
-    }
+    const CardNumber = document.getElementById('cardNumber').value;
 
     try {
-        // Create a new document in the "Testing" collection
-        await db.collection("Members").doc(newCount).add({
-            PlanID: db.doc(PlanID),//Create reference to Plan document
-            FirstName: String(FirstName),
-            LastName: String(LastName),
-            Email: String(Email),
-            Phone: String(Phone),
-            JoinDate: new Date(),
-
-
-
+        const response = await fetch('/addMember', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ PlanID, FirstName, LastName, Email, Phone, Addr1, Addr2, City, State, ZipCode, CardNumber}),
         });
-        document.getElementById('message').textContent = "Data uploaded successfully!";
+
+        if (response.ok) {
+            const result = await response.json();
+            document.getElementById('message').textContent = "Data uploaded successfully! ID: " + result.id;
+        } else {
+            const error = await response.json();
+            document.getElementById('message').textContent = error.error;
+        }
     } catch (error) {
         console.error("Error uploading data: ", error);
         document.getElementById('message').textContent = "Error uploading data.";
     }
 });
+
 
 
