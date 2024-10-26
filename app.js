@@ -1,6 +1,6 @@
 //Firebase configuration
-const {firebaseConfig} = require("./firebase");
-const {initializeApp} = require("./firebase");
+const {firebaseConfig} = require("./Database/firebase");
+const {initializeApp} = require("./Database/firebase");
 const {getFirestore, doc, setDoc, getDoc, getDocs, collection} = require("firebase/firestore");
 
 //Import password validation function from SignUp.js
