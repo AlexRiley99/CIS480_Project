@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script src="/SignUpPage/SignUp.js" defer></script>
         <script src="scripts.js" defer></script>
+        <script src="../Database/app.js"></script>
         <script src="/Database/databaseInteractions.js" defer></script>
         <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-
         <title>Flex & Flow Fitness - Sign Up</title>
     </head>
     <body>
@@ -29,6 +29,7 @@
                 <button id="plansNav" class="navigation" onclick="location.href='../PlansPage/Plans.html'" >Plans</button>
             </div>
         </nav>
+        <button id="addButton">Add Existing Documents</submit>
         <h1>Sign Up</h1>
         <div class="formContainer">
             <form id="signupForm" onsubmit="">
