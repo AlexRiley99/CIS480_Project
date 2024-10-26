@@ -1,5 +1,5 @@
+//For Firebase configuration and initialization
 const {initializeApp} = require("firebase/app");
-const {errorHandler} = require("helpers");
 const {getFirestore, doc, setDoc} = require("firebase/firestore");
 
 const{
@@ -23,17 +23,12 @@ const firebaseConfig ={
 };
 
 let app;
-let firestoreDb;//Connection to firestore database
+let db;//Connection to firestore database
 
 const initializeFirebaseApp = () => {
-  try{
     app = initializeApp(firebaseConfig);
-    firestoreDb = getFirestore();
+    db = getFirestore();
     return app;
-  } 
-  catch(error){
-    errorHandler(error, "firebase-initializerFirebaseApp");
-  }
 };
 
 const uploadProcessedData = async () => {
@@ -42,21 +37,12 @@ const uploadProcessedData = async () => {
     key2:123,
     key3:new Date(),
   };
-  try{
-    const document = doc(firestoreDb, "Testing", "2");
-    //doc takes 3 arguments: firestoreDb, Name of Collection, Unique ID
-    let dataUpdated = await setDoc()//Push data into database
-  } 
-  catch(error){
-    errorHandler(error, "firebase-uploadProcessedData");
-  }
+    const document = doc(db, "Testing", "2");
+    //doc takes 3 arguments: db, Name of Collection, Unique ID
+    let dataUpdated = await setDoc(document, dataToUpload)//Push data into database
+  
 };
 
 const getFirebaseApp = () => app;
 
-module.exports = {
-  initializeFirebaseApp,
-  getFirebaseApp,
-  uploadProcessedData,
-};
 
