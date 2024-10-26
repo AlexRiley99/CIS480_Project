@@ -1,0 +1,17 @@
+{
+    "hosting": {
+      "public": "docs",
+      "rewrites":[
+        {
+            "source": "/",
+            "destination": "/HomePage/Home.html"
+        }
+      ] ,
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    }
+  }
+  
