@@ -3,7 +3,7 @@
       "public": "docs",
       "rewrites":[
         {
-            "source": "/",
+            "source": "/**",
             "destination": "/HomePage/Home.html"
         }
       ] ,
