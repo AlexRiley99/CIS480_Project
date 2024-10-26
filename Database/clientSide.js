@@ -134,16 +134,4 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
     }
 });
 
-//TEMPORARY CODE --
-document.getElementById('addButton').addEventListener('click', () => {
-    addExistingDocuments("Members").catch(console.error);
-    addExistingDocuments("Children").catch(console.error);
-    addExistingDocuments("Plans").catch(console.error);
-    addExistingDocuments("Classes").catch(console.error);
-    addExistingDocuments("EmergencyContacts").catch(console.error);
-    addExistingDocuments("AuthorizedAdults").catch(console.error);
-    addExistingDocuments("ClassEnrollments").catch(console.error);
-    addExistingDocuments("JournalEntries").catch(console.error);
-    addExistingDocuments("Testing").catch(console.error);
-    addExistingDocuments("LoginInfo").catch(console.error);
-});
+
