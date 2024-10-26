@@ -132,7 +132,7 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
     }
 });
 
-//TEMPORARY CODE
+//TEMPORARY CODE --
 document.getElementById('addButton').addEventListener('click', () => {
     addExistingDocuments("Members").catch(console.error);
     addExistingDocuments("Children").catch(console.error);
@@ -144,4 +144,4 @@ document.getElementById('addButton').addEventListener('click', () => {
     addExistingDocuments("JournalEntries").catch(console.error);
     addExistingDocuments("Testing").catch(console.error);
     addExistingDocuments("LoginInfo").catch(console.error);
-})
+});
