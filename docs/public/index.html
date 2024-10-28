@@ -1,89 +1,77 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.0.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.0.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+        <script src="scripts.js" defer></script>
+        <script src="database.js" defer></script>
+        <title>Flex & Flow Fitness - Home</title>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logoContainerDiv">
+                <img src="Images/Logo.png" alt="Company Logo" id="Logo">
+            </div>
+            <div class="searchContainer">
+                <i class="fas fa-search"></i>
+                <input type="text" class="searchbar" id="searchQuery">  
+                <button id="searchBtn" onclick="handleSearch()">Search</button>
+                <h6 id="message"></h6>
+            </div>
+            <div class="navButtonsDiv">
+                <button id="landingNav" class="navigation" onclick="location.href='/'" >Home</button>
+                <button id="aboutNav" class="navigation" onclick="location.href='AboutPage/About.html'" >About</button>
+                <button id="classesNav" class="navigation" onclick="location.href='ClassesPage/Classes.html'" >Classes</button>
+                <button id="accountNav" class="navigation" onclick="location.href='LoginPage/Login.html'" >Log In</button>
+                <button id="plansNav" class="navigation" onclick="location.href='PlansPage/Plans.html'" >Plans</button>
+            </div>
+        </nav>
+        <h1>Flex & Flow Fitness</h1>
+        <div class="imageContainerDiv">
+            <img src="Images/Gym_Stock_Photo1.jpg" alt="Gym with large windows and three people using treadmills" id="Gym_Stock_Photo1">
+        </div>
+        <div class="hoursAndContact">
+            <div id="hoursOfOperationDiv">
+                <ul>
+                    <h4 id="hoursOfOperation">Hours of Operation</h4>
+                    <li>Monday: 7am - 9pm</li>
+                    <li>Tuesday: 7am - 9pm</li>
+                    <li>Wednesday: 7am - 9pm</li>
+                    <li>Thursday: 7am - 9pm</li>
+                    <li>Friday: 7am - 9pm</li>
+                    <li>Saturday: 9am - 5pm</li>
+                    <li>Sunday: 9am - 5pm</li>
+                </ul>
+            </div>
+            <div id="childcareHoursDiv">
+                <ul>
+                    <h4 id="childcareHours">Childcare Hours</h4>
+                    <li>Monday: 9am - 12pm & 3pm - 6pm</li>
+                    <li>Tuesday: 9am - 12pm & 3pm - 6pm</li>
+                    <li>Wednesday: 9am - 12pm & 3pm - 6pm</li>
+                    <li>Thursday: 9am - 12pm & 3pm - 6pm</li>
+                    <li>Friday: 9am - 12pm & 3pm - 6pm</li>
+                    <li>Saturday: 9am - 12pm</li>
+                    <li>Sunday: 9am - 12pm</li>
+                </ul>
+            </div>
+            <div id="contactDiv">
+                <ul>
+                <h4>Contact</h4>
+                <li>Phone: 843-714-8829</li>
+                <li>Email: aleril0593@students.ecpi.edu</li>
+                </ul>
+            </div>
+        </div>
+        <footer>
+            <div class="footerDiv">
+                <h6 class="footer">Alex Riley | October 2024 | CIS480 Software Development Capstone | ECPI University</h6>
+            </div>
+        </footer>
+    </body>
 </html>

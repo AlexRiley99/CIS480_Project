@@ -1,14 +1,14 @@
 {
     "hosting": {
-      "public": "docs",
+      "public": "docs/public",
       "rewrites":[
         {
             "source": "/",
-            "destination": "/HomePage/Home.html"
+            "destination": "/index.html"
         },
         {
           "source": "/**",
-          "destination": "/HomePage/Home.html"
+          "destination": "/index.html"
       }
       ] ,
       "ignore": [

@@ -1,0 +1,49 @@
+[debug] [2024-10-28T02:07:22.911Z] ----------------------------------------------------------------------
+[debug] [2024-10-28T02:07:22.916Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\swart\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2024-10-28T02:07:22.916Z] CLI Version:   13.23.0
+[debug] [2024-10-28T02:07:22.917Z] Platform:      win32
+[debug] [2024-10-28T02:07:22.917Z] Node Version:  v20.18.0
+[debug] [2024-10-28T02:07:22.917Z] Time:          Sun Oct 27 2024 22:07:22 GMT-0400 (Eastern Daylight Time)
+[debug] [2024-10-28T02:07:22.917Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-10-28T02:07:23.115Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-10-28T02:07:23.116Z] > authorizing via signed-in user (alexriley1099@gmail.com)
+[debug] [2024-10-28T02:07:23.116Z] [iam] checking project cis480-project for permissions ["firebase.projects.get"]
+[debug] [2024-10-28T02:07:23.118Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:23.118Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:23.120Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/cis480-project:testIamPermissions [none]
+[debug] [2024-10-28T02:07:23.121Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/cis480-project:testIamPermissions x-goog-quota-user=projects/cis480-project
+[debug] [2024-10-28T02:07:23.121Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cis480-project:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-10-28T02:07:23.400Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/cis480-project:testIamPermissions 200
+[debug] [2024-10-28T02:07:23.401Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cis480-project:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-10-28T02:07:23.401Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:23.402Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:23.402Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project [none]
+[debug] [2024-10-28T02:07:23.690Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project 200
+[debug] [2024-10-28T02:07:23.690Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project {"projectId":"cis480-project","projectNumber":"513907575321","displayName":"CIS480-Project","name":"projects/cis480-project","resources":{"hostingSite":"cis480-project"},"state":"ACTIVE","etag":"1_83bf44dd-3b63-4d88-a403-7526e862895f"}
+[info] 
+[info] === Serving from 'C:\source\CIS480_Project'...
+[info] 
+[debug] [2024-10-28T02:07:23.696Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:23.697Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:23.697Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/cis480-project/sites 
+[debug] [2024-10-28T02:07:24.142Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/cis480-project/sites 200
+[debug] [2024-10-28T02:07:24.143Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/cis480-project/sites {"sites":[{"name":"projects/cis480-project/sites/cis480-project","defaultUrl":"https://cis480-project.web.app","appId":"1:513907575321:web:be6a41860248e27b7a7888","type":"DEFAULT_SITE"}]}
+[debug] [2024-10-28T02:07:24.143Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:24.143Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:24.144Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project/webApps/1:513907575321:web:be6a41860248e27b7a7888/config [none]
+[debug] [2024-10-28T02:07:24.618Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project/webApps/1:513907575321:web:be6a41860248e27b7a7888/config 200
+[debug] [2024-10-28T02:07:24.619Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project/webApps/1:513907575321:web:be6a41860248e27b7a7888/config {"projectId":"cis480-project","appId":"1:513907575321:web:be6a41860248e27b7a7888","storageBucket":"cis480-project.appspot.com","apiKey":"AIzaSyCjp08hg0zwmkeXKl0Z1d5jMvj0Njfq2dM","authDomain":"cis480-project.firebaseapp.com","messagingSenderId":"513907575321"}
+[debug] [2024-10-28T02:07:24.624Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:24.625Z] Checked if tokens are valid: true, expires at: 1730084672948
+[debug] [2024-10-28T02:07:24.625Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project [none]
+[debug] [2024-10-28T02:07:24.907Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project 200
+[debug] [2024-10-28T02:07:24.908Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cis480-project {"projectId":"cis480-project","projectNumber":"513907575321","displayName":"CIS480-Project","name":"projects/cis480-project","resources":{"hostingSite":"cis480-project"},"state":"ACTIVE","etag":"1_83bf44dd-3b63-4d88-a403-7526e862895f"}
+[info] i  hosting[cis480-project]: Serving hosting files from: docs {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdocs\u001b[22m"}}
+[info] +  hosting[cis480-project]: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [28/Oct/2024:02:07:33 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [28/Oct/2024:02:07:33 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [28/Oct/2024:02:07:33 +0000] "GET /index.css HTTP/1.1" 404 148 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [28/Oct/2024:02:07:33 +0000] \"GET /index.css HTTP/1.1\" 404 148 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [28/Oct/2024:02:07:33 +0000] "GET /styles.css HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [28/Oct/2024:02:07:33 +0000] \"GET /styles.css HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [28/Oct/2024:02:07:34 +0000] "GET /database.js HTTP/1.1" 404 150 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [28/Oct/2024:02:07:34 +0000] \"GET /database.js HTTP/1.1\" 404 150 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [28/Oct/2024:02:07:34 +0000] "GET /scripts.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [28/Oct/2024:02:07:34 +0000] \"GET /scripts.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [28/Oct/2024:02:07:34 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [28/Oct/2024:02:07:34 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36\""}}
