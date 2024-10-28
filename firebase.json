@@ -3,9 +3,13 @@
       "public": "docs",
       "rewrites":[
         {
-            "source": "/**",
+            "source": "/",
             "destination": "/HomePage/Home.html"
-        }
+        },
+        {
+          "source": "/**",
+          "destination": "/HomePage/Home.html"
+      }
       ] ,
       "ignore": [
         "firebase.json",
