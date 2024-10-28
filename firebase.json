@@ -4,11 +4,11 @@
       "rewrites":[
         {
             "source": "/",
-            "destination": "/index.html"
+            "destination": "/index.html" 
         },
         {
           "source": "/**",
-          "destination": "/index.html"
+          "destination": "/index.html" 
       }
       ] ,
       "ignore": [
